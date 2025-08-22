@@ -14,10 +14,10 @@
    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
 
    <!-- Firebase SDKs -->
-   <script type="module">
-     import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
-     import { getFirestore, collection, addDoc, query, where, getDocs, orderBy } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
-
+   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+   
+   <script>
      const firebaseConfig = {
        apiKey: "AIzaSyA84MPC1jnfsboWKPahpFyJ_1o35gDFPmw",
        authDomain: "indian-valley-gutters.firebaseapp.com",
@@ -27,12 +27,13 @@
        appId: "1:581484441338:web:50b2225831fcf17b902343"
      };
 
-     const app = initializeApp(firebaseConfig);
-     const db = getFirestore(app);
-
+     // Initialize Firebase
+     firebase.initializeApp(firebaseConfig);
+     const db = firebase.firestore();
+     
      // Make Firebase available globally
      window.db = db;
-     window.firebaseModules = { collection, addDoc, query, where, getDocs, orderBy };
+     window.firebaseReady = true;
    </script>
 
    <style>
@@ -358,7 +359,7 @@
    </footer>
 
    <!-- JavaScript -->
-   <script type="module">
+   <script>
       class BookingSystem {
          constructor() {
             this.currentDate = new Date();
@@ -377,25 +378,31 @@
          }
 
          async init() {
-            await this.loadBookings();
+            try {
+               await this.loadBookings();
+            } catch (error) {
+               console.error('Error loading bookings from Firebase:', error);
+               this.generateSampleBookings();
+            }
             this.renderCalendar();
             this.setupEventListeners();
             document.getElementById('loadingIndicator').classList.add('hidden');
          }
 
          async loadBookings() {
+            if (!window.db) {
+               throw new Error('Firebase not initialized');
+            }
+
             try {
-               const { collection, query, where, getDocs } = window.firebaseModules;
                const endDate = new Date(2025, 8, 15); // September 15, 2025
                const startDate = new Date();
                
-               const bookingsQuery = query(
-                  collection(window.db, 'bookings'),
-                  where('date', '>=', startDate.toISOString().split('T')[0]),
-                  where('date', '<=', endDate.toISOString().split('T')[0])
-               );
+               const bookingsQuery = window.db.collection('bookings')
+                  .where('date', '>=', startDate.toISOString().split('T')[0])
+                  .where('date', '<=', endDate.toISOString().split('T')[0]);
                
-               const querySnapshot = await getDocs(bookingsQuery);
+               const querySnapshot = await bookingsQuery.get();
                
                querySnapshot.forEach((doc) => {
                   const data = doc.data();
@@ -408,8 +415,7 @@
                
             } catch (error) {
                console.error('Error loading bookings:', error);
-               // Add some sample bookings as fallback
-               this.generateSampleBookings();
+               throw error;
             }
          }
 
@@ -560,4 +566,203 @@
             this.selectedDate = date;
             this.selectedTime = null;
             
-            //
+            // Update selected date styling
+            document.querySelectorAll('.calendar-day').forEach(cell => {
+               cell.classList.remove('selected');
+            });
+            event.target.closest('.calendar-day').classList.add('selected');
+
+            // Show time slots
+            this.renderTimeSlots();
+            this.updateSubmitButton();
+         }
+
+         renderTimeSlots() {
+            const dateString = this.selectedDate.toISOString().split('T')[0];
+            const bookedSlots = this.bookings[dateString] || [];
+            
+            const container = document.getElementById('timeSlotsContainer');
+            const slotsGrid = document.getElementById('timeSlots');
+            const dateText = document.getElementById('selectedDateText');
+            
+            dateText.textContent = this.selectedDate.toLocaleDateString('en-US', {
+               weekday: 'long',
+               year: 'numeric',
+               month: 'long',
+               day: 'numeric'
+            });
+
+            slotsGrid.innerHTML = '';
+
+            this.timeSlots.forEach(slot => {
+               const slotElement = document.createElement('div');
+               slotElement.className = 'time-slot p-3 text-center border border-gray-300 rounded-lg cursor-pointer font-semibold';
+               
+               if (bookedSlots.includes(slot.value)) {
+                  slotElement.classList.add('booked');
+                  slotElement.innerHTML = `${slot.time}<br><small class="font-normal">Booked</small>`;
+               } else {
+                  slotElement.classList.add('bg-white', 'hover:bg-blue-50');
+                  slotElement.textContent = slot.time;
+                  slotElement.addEventListener('click', () => this.selectTime(slot));
+               }
+
+               slotsGrid.appendChild(slotElement);
+            });
+
+            container.classList.remove('hidden');
+         }
+
+         selectTime(slot) {
+            this.selectedTime = slot;
+            
+            // Update selected time styling
+            document.querySelectorAll('.time-slot').forEach(timeSlot => {
+               timeSlot.classList.remove('selected');
+            });
+            event.target.classList.add('selected');
+
+            // Update appointment details
+            this.updateAppointmentDetails();
+            this.updateSubmitButton();
+         }
+
+         updateAppointmentDetails() {
+            if (this.selectedDate && this.selectedTime) {
+               const container = document.getElementById('selectedAppointment');
+               const details = document.getElementById('appointmentDetails');
+               
+               const dateText = this.selectedDate.toLocaleDateString('en-US', {
+                  weekday: 'long',
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+               });
+               
+               details.innerHTML = `
+                  <strong>Date:</strong> ${dateText}<br>
+                  <strong>Time:</strong> ${this.selectedTime.time}
+               `;
+               
+               container.classList.remove('hidden');
+            }
+         }
+
+         updateSubmitButton() {
+            const submitBtn = document.getElementById('submitBtn');
+            const isFormValid = this.selectedDate && this.selectedTime;
+            
+            submitBtn.disabled = !isFormValid;
+            submitBtn.textContent = isFormValid ? 'Book Appointment' : 'Select Date & Time';
+         }
+
+         async handleBookingSubmission() {
+            const form = document.getElementById('bookingForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const formData = new FormData(form);
+            
+            // Validate required fields
+            if (!this.selectedDate || !this.selectedTime) {
+               this.showMessage('Please select a date and time.', 'error');
+               return;
+            }
+
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Booking...';
+            form.classList.add('loading');
+
+            try {
+               const bookingData = {
+                  name: formData.get('name'),
+                  email: formData.get('email'),
+                  phone: formData.get('phone'),
+                  address: formData.get('address'),
+                  serviceType: formData.get('serviceType'),
+                  notes: formData.get('notes') || '',
+                  date: this.selectedDate.toISOString().split('T')[0],
+                  time: this.selectedTime.value,
+                  timeDisplay: this.selectedTime.time,
+                  createdAt: new Date().toISOString(),
+                  status: 'pending'
+               };
+
+               // Save to Firebase
+               if (window.db) {
+                  await window.db.collection('bookings').add(bookingData);
+               } else {
+                  console.warn('Firebase not available, booking saved locally only');
+               }
+
+               // Update local bookings
+               const dateString = bookingData.date;
+               if (!this.bookings[dateString]) {
+                  this.bookings[dateString] = [];
+               }
+               this.bookings[dateString].push(bookingData.time);
+
+               // Show success message
+               this.showMessage(
+                  `Your appointment has been booked for ${bookingData.timeDisplay} on ${this.selectedDate.toLocaleDateString()}. We'll contact you within 24 hours to confirm.`,
+                  'success'
+               );
+
+               // Reset form and calendar
+               this.resetForm();
+               this.renderCalendar();
+
+            } catch (error) {
+               console.error('Error booking appointment:', error);
+               this.showMessage('Sorry, there was an error booking your appointment. Please try again or call us directly.', 'error');
+            } finally {
+               submitBtn.disabled = false;
+               submitBtn.textContent = 'Book Appointment';
+               form.classList.remove('loading');
+            }
+         }
+
+         showMessage(message, type) {
+            const container = document.getElementById('messageContainer');
+            const content = document.getElementById('messageContent');
+            
+            content.textContent = message;
+            content.className = `p-4 rounded-lg text-center ${type === 'success' ? 'success-message' : 'error-message'}`;
+            
+            container.classList.remove('hidden');
+            
+            // Scroll to message
+            container.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // Auto-hide after 10 seconds for success messages
+            if (type === 'success') {
+               setTimeout(() => {
+                  container.classList.add('hidden');
+               }, 10000);
+            }
+         }
+
+         resetForm() {
+            document.getElementById('bookingForm').reset();
+            document.getElementById('selectedAppointment').classList.add('hidden');
+            document.getElementById('timeSlotsContainer').classList.add('hidden');
+            
+            document.querySelectorAll('.calendar-day').forEach(cell => {
+               cell.classList.remove('selected');
+            });
+            
+            this.selectedDate = null;
+            this.selectedTime = null;
+            this.updateSubmitButton();
+         }
+      }
+
+      // Initialize the booking system when DOM is loaded
+      document.addEventListener('DOMContentLoaded', () => {
+         // Initialize immediately since we're using compat SDK
+         new BookingSystem();
+      });
+   </script>
+   </script>
+
+</body>
+</html>
