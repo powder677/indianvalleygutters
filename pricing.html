@@ -13,6 +13,29 @@
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
 
+   <!-- Firebase SDKs -->
+   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+   <script>
+      const firebaseConfig = {
+         apiKey: "AIzaSyA84MPC1jnfsboWKPahpFyJ_1o35gDFPmw",
+         authDomain: "indian-valley-gutters.firebaseapp.com",
+         projectId: "indian-valley-gutters",
+         storageBucket: "indian-valley-gutters.firebasestorage.app",
+         messagingSenderId: "581484441338",
+         appId: "1:581484441338:web:50b2225831fcf17b902343"
+      };
+
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.firestore();
+
+      // Make Firebase available globally
+      window.db = db;
+      window.firebaseReady = true;
+   </script>
+
    <style>
       body {
          font-family: 'Inter', sans-serif;
@@ -28,7 +51,7 @@
          padding: 8px 4px;
       }
 
-      .calendar-day:not(.disabled):not(.other-month):not(.fully-booked):hover {
+      .calendar-day:not(.disabled):not(.other-month):hover {
          background-color: #dbeafe;
          cursor: pointer;
          transform: scale(1.02);
@@ -58,8 +81,6 @@
       .calendar-day.fully-booked {
          background-color: #fee2e2;
          border: 2px solid #ef4444;
-         color: #991b1b;
-         cursor: not-allowed;
       }
 
       .appointment-dot {
@@ -179,18 +200,18 @@
             </div>
          </div>
 
-         <!-- Notice about booking -->
-         <div class="bg-red-50 border-l-4 border-red-400 p-6 mb-16 max-w-4xl mx-auto">
+         <!-- Deposit Notice -->
+         <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 mb-16 max-w-4xl mx-auto">
             <div class="flex">
                <div class="flex-shrink-0">
-                  <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
-                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                  <svg class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                     <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
                   </svg>
                </div>
                <div class="ml-3">
-                  <h3 class="text-lg font-medium text-red-800">Currently Fully Booked</h3>
-                  <div class="mt-2 text-sm text-red-700">
-                     <p><strong>We are fully booked through September 14, 2025.</strong> New appointments are available starting September 15, 2025. $50 deposit required to secure your booking.</p>
+                  <h3 class="text-lg font-medium text-yellow-800">Payment Information</h3>
+                  <div class="mt-2 text-sm text-yellow-700">
+                     <p><strong>$50 deposit required to book your appointment.</strong> The remaining balance will be collected after your service is completed. We accept all major credit cards.</p>
                   </div>
                </div>
             </div>
@@ -198,11 +219,16 @@
 
          <!-- Booking Form Section -->
          <section id="booking" class="bg-white p-8 rounded-lg shadow-md max-w-7xl mx-auto mb-16">
-            <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">Schedule Your Service</h2>
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">Schedule Your Service Instantly</h2>
 
             <!-- Success/Error Messages -->
             <div id="messageContainer" class="mb-6 hidden">
                <div id="messageContent" class="p-4 rounded-lg text-center"></div>
+            </div>
+
+            <!-- Loading Indicator -->
+            <div id="loadingIndicator" class="text-center mb-6 hidden">
+               <p class="text-gray-600">Loading available appointments...</p>
             </div>
 
             <!-- Calendar and Booking Form Container -->
@@ -217,7 +243,7 @@
                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                            </svg>
                         </button>
-                        <h3 id="monthYear" class="text-2xl font-bold text-gray-900">Loading...</h3>
+                        <h3 id="monthYear" class="text-2xl font-bold text-gray-900"></h3>
                         <button id="nextMonth" class="p-3 rounded-full hover:bg-gray-200 transition-colors">
                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -245,6 +271,10 @@
                            <span>Available</span>
                         </div>
                         <div class="flex items-center">
+                           <div class="w-4 h-4 bg-yellow-200 border-2 border-yellow-500 rounded mr-2"></div>
+                           <span>Partially Booked</span>
+                        </div>
+                        <div class="flex items-center">
                            <div class="w-4 h-4 bg-red-200 border-2 border-red-500 rounded mr-2"></div>
                            <span>Fully Booked</span>
                         </div>
@@ -268,7 +298,7 @@
                <div class="lg:col-span-1">
                   <div class="bg-blue-50 p-6 rounded-lg">
                      <h3 class="text-xl font-bold mb-4 text-gray-900">Book Your Service</h3>
-                     <div class="space-y-4">
+                     <form id="bookingForm" class="space-y-4">
                         <div>
                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
                            <input type="text" name="name" id="name" required class="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500">
@@ -276,10 +306,6 @@
                         <div>
                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email *</label>
                            <input type="email" name="email" id="email" required class="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500">
-                        </div>
-                        <div>
-                           <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number *</label>
-                           <input type="tel" name="phone" id="phone" required class="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500">
                         </div>
                         <div>
                            <label for="address" class="block text-sm font-medium text-gray-700 mb-1">Address *</label>
