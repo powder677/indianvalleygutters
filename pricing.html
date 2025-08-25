@@ -13,6 +13,10 @@
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
 
+   <!-- Firebase SDKs -->
+   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
    <style>
       body {
          font-family: 'Inter', sans-serif;
@@ -26,23 +30,24 @@
          justify-content: flex-start;
          align-items: center;
          padding: 8px 4px;
-         cursor: pointer;
       }
 
       .calendar-day:not(.disabled):not(.other-month):hover {
          background-color: #dbeafe;
+         cursor: pointer;
          transform: scale(1.02);
       }
 
       .calendar-day.selected {
-         background-color: #2563eb !important;
+         background-color: #2563eb;
          color: white;
       }
 
       .calendar-day.disabled {
          color: #9ca3af;
          cursor: not-allowed;
-         opacity: 0.5;
+         background-color: #f3f4f6;
+         opacity: 0.6;
       }
 
       .calendar-day.other-month {
@@ -51,23 +56,39 @@
       }
 
       .calendar-day.has-appointments {
-         background-color: #fef3c7;
-         border: 2px solid #f59e0b;
+         background-color: #fef9c3;
+         /* Lighter yellow for partially booked */
       }
 
       .calendar-day.fully-booked {
          background-color: #fee2e2;
-         border: 2px solid #ef4444;
+         color: #9ca3af;
          cursor: not-allowed;
+      }
+
+      .appointment-dot-container {
+         display: flex;
+         flex-wrap: wrap;
+         justify-content: center;
+         padding-top: 4px;
+      }
+
+      .appointment-dot {
+         width: 8px;
+         height: 8px;
+         border-radius: 50%;
+         margin: 1px;
+         background-color: #f59e0b;
+         /* Orange dot for booked slots */
       }
 
       .time-slot {
          transition: all 0.2s ease-in-out;
-         cursor: pointer;
       }
 
       .time-slot:not(.booked):hover {
          background-color: #dbeafe;
+         cursor: pointer;
          transform: translateY(-2px);
       }
 
@@ -94,6 +115,11 @@
          border: 1px solid #dc2626;
          color: #991b1b;
       }
+
+      .loading {
+         opacity: 0.6;
+         pointer-events: none;
+      }
    </style>
 </head>
 
@@ -109,7 +135,6 @@
             <a href="index.html" class="text-gray-600 hover:text-blue-600">Home</a>
             <a href="pricing.html" class="text-blue-600 font-semibold">Pricing & Booking</a>
             <a href="about.html" class="text-gray-600 hover:text-blue-600">About Us</a>
-            <a href="contact.html" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">Contact Us</a>
          </div>
       </nav>
    </header>
@@ -177,89 +202,90 @@
                <div class="ml-3">
                   <h3 class="text-lg font-medium text-yellow-800">Payment Information</h3>
                   <div class="mt-2 text-sm text-yellow-700">
-                     <p><strong>$50 deposit required to book your appointment.</strong> The remaining balance will be collected after your service is completed. We accept all major credit cards.</p>
+                     <p><strong>A $50 deposit is required to book your appointment.</strong> After filling out your details, you will be redirected to our secure payment page. The remaining balance is due upon service completion.</p>
                   </div>
                </div>
             </div>
          </div>
 
          <!-- Booking Form Section -->
-         <section id="booking" class="bg-white p-8 rounded-lg shadow-md max-w-7xl mx-auto mb-16">
+         <section id="booking" class="bg-white p-4 sm:p-8 rounded-lg shadow-md max-w-7xl mx-auto mb-16">
             <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">Schedule Your Service Instantly</h2>
 
-            <!-- Success/Error Messages -->
-            <div id="messageContainer" class="mb-6 hidden">
-               <div id="messageContent" class="p-4 rounded-lg text-center"></div>
+            <div id="messageContainer" class="mb-6"></div>
+
+            <div id="loadingIndicator" class="text-center mb-6 hidden">
+               <p class="text-gray-600">Loading available appointments...</p>
             </div>
 
-            <!-- Calendar and Booking Form Container -->
-            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <form id="bookingForm">
+               <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
 
-               <!-- Large Calendar UI -->
-               <div class="lg:col-span-3">
-                  <div class="bg-gray-50 p-6 rounded-lg shadow-inner">
-                     <div class="flex items-center justify-between mb-6">
-                        <button id="prevMonth" class="p-3 rounded-full hover:bg-gray-200 transition-colors">
-                           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                           </svg>
-                        </button>
-                        <h3 id="monthYear" class="text-2xl font-bold text-gray-900"></h3>
-                        <button id="nextMonth" class="p-3 rounded-full hover:bg-gray-200 transition-colors">
-                           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                           </svg>
-                        </button>
+                  <div class="lg:col-span-3">
+                     <div class="bg-gray-50 p-2 sm:p-6 rounded-lg shadow-inner">
+                        <div class="flex items-center justify-between mb-6">
+                           <button type="button" id="prevMonth" class="p-3 rounded-full hover:bg-gray-200 transition-colors"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                              </svg></button>
+                           <h3 id="monthYear" class="text-xl sm:text-2xl font-bold text-gray-900 text-center"></h3>
+                           <button type="button" id="nextMonth" class="p-3 rounded-full hover:bg-gray-200 transition-colors"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                              </svg></button>
+                        </div>
+                        <div class="grid grid-cols-7 gap-1 sm:gap-2 text-center mb-4 text-xs sm:text-base">
+                           <div class="font-semibold text-gray-700 p-1 sm:p-3">Sun</div>
+                           <div class="font-semibold text-gray-700 p-1 sm:p-3">Mon</div>
+                           <div class="font-semibold text-gray-700 p-1 sm:p-3">Tue</div>
+                           <div class="font-semibold text-gray-700 p-1 sm:p-3">Wed</div>
+                           <div class="font-semibold text-gray-700 p-1 sm:p-3">Thu</div>
+                           <div class="font-semibold text-gray-700 p-1 sm:p-3">Fri</div>
+                           <div class="font-semibold text-gray-700 p-1 sm:p-3">Sat</div>
+                        </div>
+                        <div id="calendarGrid" class="grid grid-cols-7 gap-1 sm:gap-2 text-center mb-6">
+                           <!-- Calendar days generated by JS -->
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center space-x-4 text-xs sm:text-sm">
+                           <div class="flex items-center my-1">
+                              <div class="w-4 h-4 bg-white border-2 border-gray-300 rounded mr-2"></div><span>Available</span>
+                           </div>
+                           <div class="flex items-center my-1">
+                              <div class="w-4 h-4 bg-yellow-200 rounded mr-2"></div><span>Partially Booked</span>
+                           </div>
+                           <div class="flex items-center my-1">
+                              <div class="w-4 h-4 bg-red-200 rounded mr-2"></div><span>Fully Booked</span>
+                           </div>
+                        </div>
                      </div>
 
-                     <div class="grid grid-cols-7 gap-2 text-center mb-4">
-                        <div class="font-semibold text-gray-700 p-3 text-lg">Sun</div>
-                        <div class="font-semibold text-gray-700 p-3 text-lg">Mon</div>
-                        <div class="font-semibold text-gray-700 p-3 text-lg">Tue</div>
-                        <div class="font-semibold text-gray-700 p-3 text-lg">Wed</div>
-                        <div class="font-semibold text-gray-700 p-3 text-lg">Thu</div>
-                        <div class="font-semibold text-gray-700 p-3 text-lg">Fri</div>
-                        <div class="font-semibold text-gray-700 p-3 text-lg">Sat</div>
-                     </div>
-
-                     <div id="calendarGrid" class="grid grid-cols-7 gap-2 text-center mb-6">
-                        <!-- Calendar days will be generated here by JavaScript -->
-                     </div>
-
-                     <div class="flex items-center justify-center space-x-6 text-sm">
-                        <div class="flex items-center">
-                           <div class="w-4 h-4 bg-green-200 border-2 border-green-500 rounded mr-2"></div>
-                           <span>Available</span>
-                        </div>
-                        <div class="flex items-center">
-                           <div class="w-4 h-4 bg-yellow-200 border-2 border-yellow-500 rounded mr-2"></div>
-                           <span>Partially Booked</span>
-                        </div>
-                        <div class="flex items-center">
-                           <div class="w-4 h-4 bg-red-200 border-2 border-red-500 rounded mr-2"></div>
-                           <span>Fully Booked</span>
-                        </div>
-                        <div class="flex items-center">
-                           <div class="w-4 h-4 bg-gray-200 rounded mr-2"></div>
-                           <span>Unavailable</span>
+                     <div id="timeSlotsContainer" class="mt-6 hidden">
+                        <h4 class="font-bold text-xl mb-4">Available Times for <span id="selectedDateText" class="text-blue-600"></span>:</h4>
+                        <div id="timeSlots" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+                           <!-- Time slots generated by JS -->
                         </div>
                      </div>
                   </div>
 
-                  <!-- Time Slots -->
-                  <div id="timeSlotsContainer" class="mt-6 hidden">
-                     <h4 class="font-bold text-xl mb-4">Available Times for <span id="selectedDateText" class="text-blue-600"></span>:</h4>
-                     <div id="timeSlots" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
-                        <!-- Time slots will be generated here -->
-                     </div>
-                  </div>
-               </div>
+                  <div class="lg:col-span-1">
+                     <div class="bg-blue-50 p-6 rounded-lg sticky top-28 space-y-4">
+                        <h3 class="text-xl font-bold text-gray-900 border-b pb-2">Your Appointment</h3>
 
-               <!-- Booking Form -->
-               <div class="lg:col-span-1">
-                  <div class="bg-blue-50 p-6 rounded-lg">
-                     <h3 class="text-xl font-bold mb-4 text-gray-900">Book Your Service</h3>
-                     <div class="space-y-4">
+                        <div class="bg-white p-3 rounded-md">
+                           <p class="text-sm font-medium text-gray-600">Selected Date:</p>
+                           <p id="summaryDate" class="font-bold text-lg text-blue-700">Select a date</p>
+                        </div>
+                        <div class="bg-white p-3 rounded-md">
+                           <p class="text-sm font-medium text-gray-600">Selected Time:</p>
+                           <p id="summaryTime" class="font-bold text-lg text-blue-700">Select a time</p>
+                        </div>
+
+                        <div>
+                           <label for="serviceType" class="block text-sm font-medium text-gray-700 mb-1">Service Type *</label>
+                           <select id="serviceType" name="serviceType" required class="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                              <option value="">Select service...</option>
+                              <option value="1-story">1-Story - $199</option>
+                              <option value="2-story">2-Story - $269</option>
+                           </select>
+                        </div>
                         <div>
                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
                            <input type="text" name="name" id="name" required class="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500">
@@ -269,17 +295,292 @@
                            <input type="email" name="email" id="email" required class="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500">
                         </div>
                         <div>
-                           <label for="address" class="block text-sm font-medium text-gray-700 mb-1">Address *</label>
+                           <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone *</label>
+                           <input type="tel" name="phone" id="phone" required class="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                        </div>
+                        <div>
+                           <label for="address" class="block text-sm font-medium text-gray-700 mb-1">Service Address *</label>
                            <input type="text" name="address" id="address" required class="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500">
                         </div>
-                        <div>
-                           <label for="serviceType" class="block text-sm font-medium text-gray-700 mb-1">Service Type *</label>
-                           <select id="serviceType" name="serviceType" required class="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500">
-                              <option value="">Select service</option>
-                              <option value="1-story">1-Story - $199</option>
-                              <option value="2-story">2-Story - $269</option>
-                           </select>
-                        </div>
-                        <div>
-                           <label for="notes" class="block text-sm font-medium text-gray-700 mb-1">Special Instructions</label>
-                           <textarea name="notes" id="notes" rows="2" class="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500" placeholder="Any special requests...">
+
+                        <button type="submit" id="bookButton" class="w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-lg shadow-lg hover:bg-blue-700 transition transform hover:scale-105 disabled:bg-gray-400 disabled:cursor-not-allowed disabled:transform-none" disabled>
+                           Proceed to Deposit
+                        </button>
+                     </div>
+                  </div>
+               </div>
+            </form>
+         </section>
+      </div>
+   </main>
+
+   <footer class="bg-gray-900 text-white">
+      <div class="container mx-auto px-6 py-8 text-center">
+         <p>© 2024 Indian Valley Gutters. All Rights Reserved.</p>
+         <p class="text-sm text-gray-400 mt-2">Serving Souderton, Telford, Harleysville, Quakertown, and the Indian Valley, PA area.</p>
+      </div>
+   </footer>
+
+   <script>
+      document.addEventListener('DOMContentLoaded', function() {
+         // --- Firebase Initialization ---
+         const firebaseConfig = {
+            apiKey: "AIzaSyA84MPC1jnfsboWKPahpFyJ_1o35gDFPmw",
+            authDomain: "indian-valley-gutters.firebaseapp.com",
+            projectId: "indian-valley-gutters",
+            storageBucket: "indian-valley-gutters.firebasestorage.app",
+            messagingSenderId: "581484441338",
+            appId: "1:581484441338:web:50b2225831fcf17b902343"
+         };
+         firebase.initializeApp(firebaseConfig);
+         const db = firebase.firestore();
+
+         // --- DOM Elements ---
+         const calendarGrid = document.getElementById('calendarGrid');
+         const monthYearEl = document.getElementById('monthYear');
+         const prevMonthBtn = document.getElementById('prevMonth');
+         const nextMonthBtn = document.getElementById('nextMonth');
+         const timeSlotsContainer = document.getElementById('timeSlotsContainer');
+         const timeSlotsEl = document.getElementById('timeSlots');
+         const selectedDateText = document.getElementById('selectedDateText');
+         const bookingForm = document.getElementById('bookingForm');
+         const bookButton = document.getElementById('bookButton');
+         const summaryDate = document.getElementById('summaryDate');
+         const summaryTime = document.getElementById('summaryTime');
+         const serviceTypeSelect = document.getElementById('serviceType');
+         const loadingIndicator = document.getElementById('loadingIndicator');
+         const messageContainer = document.getElementById('messageContainer');
+
+         // --- State Management ---
+         let currentDate = new Date();
+         currentDate.setDate(1); // Start with the first day of the month
+         let selectedDate = null;
+         let selectedTime = null;
+         let appointments = {}; // Cache for appointments: { 'YYYY-MM-DD': count }
+
+         // --- Constants ---
+         const APPOINTMENTS_PER_DAY = 5;
+         const BOOKED_UNTIL_DATE = new Date(new Date().getFullYear(), 8, 14); // September is month 8 (0-indexed)
+
+         // --- Main Functions ---
+         async function fetchAppointmentsForMonth(year, month) {
+            loadingIndicator.classList.remove('hidden');
+            const startDate = new Date(year, month, 1);
+            const endDate = new Date(year, month + 1, 0);
+
+            const startStr = `${year}-${String(month + 1).padStart(2, '0')}-01`;
+            const endStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(endDate.getDate()).padStart(2, '0')}`;
+
+            try {
+               const snapshot = await db.collection('appointments')
+                  .where('date', '>=', startStr)
+                  .where('date', '<=', endStr)
+                  .get();
+
+               // Reset counts for the current month
+               for (let i = 1; i <= endDate.getDate(); i++) {
+                  const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+                  appointments[dateStr] = 0;
+               }
+
+               snapshot.forEach(doc => {
+                  const date = doc.data().date;
+                  if (appointments[date] !== undefined) {
+                     appointments[date]++;
+                  }
+               });
+            } catch (error) {
+               console.error("Error fetching appointments: ", error);
+               showMessage('error', 'Could not load appointment data. Please try again later.');
+            } finally {
+               loadingIndicator.classList.add('hidden');
+               generateCalendar(year, month);
+            }
+         }
+
+         function generateCalendar(year, month) {
+            calendarGrid.innerHTML = '';
+            monthYearEl.textContent = `${new Date(year, month).toLocaleString('default', { month: 'long' })} ${year}`;
+
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const today = new Date();
+            today.setHours(0, 0, 0, 0); // Normalize today's date
+
+            for (let i = 0; i < firstDay; i++) {
+               calendarGrid.innerHTML += `<div class="other-month"></div>`;
+            }
+
+            for (let day = 1; day <= daysInMonth; day++) {
+               const dayEl = document.createElement('div');
+               const date = new Date(year, month, day);
+               date.setHours(0, 0, 0, 0); // Normalize loop date
+               const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+
+               dayEl.classList.add('calendar-day', 'rounded-lg', 'text-lg', 'font-semibold');
+               dayEl.innerHTML = `<span>${day}</span><div class="appointment-dot-container"></div>`;
+               dayEl.dataset.date = dateStr;
+
+               const appointmentCount = appointments[dateStr] || 0;
+               const dotsContainer = dayEl.querySelector('.appointment-dot-container');
+               for (let i = 0; i < appointmentCount; i++) {
+                  dotsContainer.innerHTML += `<div class="appointment-dot"></div>`;
+               }
+
+               if (date < today || date <= BOOKED_UNTIL_DATE) {
+                  dayEl.classList.add('disabled', 'fully-booked');
+                  dayEl.title = "This date is unavailable.";
+               } else if (appointmentCount >= APPOINTMENTS_PER_DAY) {
+                  dayEl.classList.add('fully-booked');
+                  dayEl.title = "This date is fully booked.";
+               } else {
+                  if (appointmentCount > 0) {
+                     dayEl.classList.add('has-appointments');
+                  }
+                  dayEl.addEventListener('click', () => handleDateClick(dateStr, dayEl));
+               }
+
+               if (selectedDate === dateStr) {
+                  dayEl.classList.add('selected');
+               }
+
+               calendarGrid.appendChild(dayEl);
+            }
+         }
+
+         function handleDateClick(dateStr, dayEl) {
+            const prevSelected = document.querySelector('.calendar-day.selected');
+            if (prevSelected) prevSelected.classList.remove('selected');
+            dayEl.classList.add('selected');
+            selectedDate = dateStr;
+            selectedTime = null; // Reset time when date changes
+
+            selectedDateText.textContent = new Date(dateStr + 'T00:00:00').toLocaleDateString('en-US', {
+               weekday: 'long',
+               year: 'numeric',
+               month: 'long',
+               day: 'numeric'
+            });
+            summaryDate.textContent = selectedDate;
+            summaryTime.textContent = 'Select a time';
+            timeSlotsContainer.classList.remove('hidden');
+            generateTimeSlots(dateStr);
+            updateBookButtonState();
+         }
+
+         async function generateTimeSlots(dateStr) {
+            timeSlotsEl.innerHTML = '';
+            const availableSlots = ["09:00 AM", "11:00 AM", "01:00 PM", "03:00 PM", "05:00 PM"];
+
+            availableSlots.forEach(time => {
+               const timeSlotEl = document.createElement('button');
+               timeSlotEl.type = 'button';
+               timeSlotEl.classList.add('time-slot', 'p-3', 'rounded-md', 'font-semibold', 'border');
+               timeSlotEl.textContent = time;
+               timeSlotEl.dataset.time = time;
+
+               timeSlotEl.addEventListener('click', () => {
+                  const prevSelected = document.querySelector('.time-slot.selected');
+                  if (prevSelected) prevSelected.classList.remove('selected');
+                  timeSlotEl.classList.add('selected');
+                  selectedTime = time;
+                  summaryTime.textContent = selectedTime;
+                  updateBookButtonState();
+               });
+               timeSlotsEl.appendChild(timeSlotEl);
+            });
+         }
+
+         function showMessage(type, message) {
+            const messageContent = document.createElement('div');
+            messageContainer.innerHTML = '';
+            messageContent.textContent = message;
+            messageContent.className = `p-4 rounded-lg text-center ${type === 'error' ? 'error-message' : 'success-message'}`;
+            messageContainer.appendChild(messageContent);
+         }
+
+         function updateBookButtonState() {
+            // Only enable the button if a date and time are selected.
+            // Form field validation will happen on submit.
+            if (selectedDate && selectedTime) {
+               bookButton.disabled = false;
+            } else {
+               bookButton.disabled = true;
+            }
+         }
+
+         // --- Event Listeners ---
+         prevMonthBtn.addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            fetchAppointmentsForMonth(currentDate.getFullYear(), currentDate.getMonth());
+         });
+
+         nextMonthBtn.addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            fetchAppointmentsForMonth(currentDate.getFullYear(), currentDate.getMonth());
+         });
+
+         // Add listeners to all form inputs to check button state
+         bookingForm.querySelectorAll('input, select').forEach(input => {
+            input.addEventListener('input', updateBookButtonState);
+         });
+
+         bookingForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            messageContainer.innerHTML = ''; // Clear old messages
+
+            // Simple check for required fields
+            if (!bookingForm.checkValidity()) {
+               showMessage('error', 'Please fill out all required fields.');
+               return;
+            }
+            if (!selectedDate || !selectedTime) {
+               showMessage('error', 'Please select an available date and time slot.');
+               return;
+            }
+
+            bookButton.disabled = true;
+            bookButton.textContent = 'Booking...';
+
+            const appointmentData = {
+               service: document.getElementById('serviceType').value,
+               date: selectedDate,
+               time: selectedTime,
+               name: document.getElementById('name').value,
+               email: document.getElementById('email').value,
+               phone: document.getElementById('phone').value,
+               address: document.getElementById('address').value,
+               status: 'pending_payment',
+               createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            };
+
+            try {
+               // Save the pending appointment to Firestore
+               const docRef = await db.collection('appointments').add(appointmentData);
+               console.log("Pending appointment saved with ID: ", docRef.id);
+
+               // **This is now your LIVE Stripe Payment Link**
+               const stripePaymentLink = 'https://buy.stripe.com/5kQ6oGfsF5HW4tNcGVbbG0j';
+
+               // Pass the Firestore document ID to Stripe. This is crucial for linking the
+               // payment back to the appointment after it's successful.
+               const redirectUrl = `${stripePaymentLink}?client_reference_id=${docRef.id}`;
+
+               // Redirect to Stripe for payment
+               window.location.href = redirectUrl;
+
+            } catch (error) {
+               console.error("Error creating appointment: ", error);
+               showMessage('error', 'There was an error booking your appointment. Please try again.');
+               bookButton.disabled = false;
+               bookButton.textContent = 'Proceed to Deposit';
+            }
+         });
+
+         // --- Initial Load ---
+         fetchAppointmentsForMonth(currentDate.getFullYear(), currentDate.getMonth());
+      });
+   </script>
+</body>
+
+</html>
