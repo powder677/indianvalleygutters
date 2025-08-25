@@ -134,9 +134,23 @@
          <div class="hidden md:flex space-x-6 items-center">
             <a href="index.html" class="text-gray-600 hover:text-blue-600">Home</a>
             <a href="pricing.html" class="text-blue-600 font-semibold">Pricing & Booking</a>
+            <a href="blog.html" class="text-gray-600 hover:text-blue-600">Blog</a>
             <a href="about.html" class="text-gray-600 hover:text-blue-600">About Us</a>
          </div>
+         <div class="md:hidden">
+            <button id="mobile-menu-button" class="text-gray-600 hover:text-blue-600 focus:outline-none">
+               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+               </svg>
+            </button>
+         </div>
       </nav>
+      <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
+         <a href="index.html" class="block py-2 px-4 text-sm hover:bg-gray-50">Home</a>
+         <a href="pricing.html" class="block py-2 px-4 text-sm text-blue-600">Pricing & Booking</a>
+         <a href="blog.html" class="block py-2 px-4 text-sm hover:bg-gray-50">Blog</a>
+         <a href="about.html" class="block py-2 px-4 text-sm hover:bg-gray-50">About Us</a>
+      </div>
    </header>
 
    <!-- Main Content -->
@@ -315,14 +329,52 @@
    </main>
 
    <footer class="bg-gray-900 text-white">
-      <div class="container mx-auto px-6 py-8 text-center">
-         <p>© 2024 Indian Valley Gutters. All Rights Reserved.</p>
-         <p class="text-sm text-gray-400 mt-2">Serving Souderton, Telford, Harleysville, Quakertown, and the Indian Valley, PA area.</p>
+      <div class="container mx-auto px-6 py-12">
+         <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
+            <div>
+               <h3 class="text-xl font-bold mb-4">Indian Valley <span class="text-blue-400">Gutters</span></h3>
+               <p class="text-gray-300 mb-4">
+                  203 E Broad St<br>
+                  Souderton, PA 18964
+               </p>
+               <p class="text-gray-300">Licensed & Insured</p>
+            </div>
+            <div>
+               <h3 class="text-lg font-bold mb-4">Service Areas</h3>
+               <ul class="space-y-2 text-gray-300">
+                  <li>Souderton, PA</li>
+                  <li>Lansdale, PA</li>
+                  <li>Telford, PA</li>
+                  <li>Harleysville, PA</li>
+                  <li>And the surrounding Indian Valley area</li>
+               </ul>
+            </div>
+            <div>
+               <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+               <ul class="space-y-2">
+                  <li><a href="index.html" class="text-gray-300 hover:text-white">Home</a></li>
+                  <li><a href="pricing.html" class="text-gray-300 hover:text-white">Pricing & Booking</a></li>
+                  <li><a href="blog.html" class="text-gray-300 hover:text-white">Blog</a></li>
+                  <li><a href="about.html" class="text-gray-300 hover:text-white">About Us</a></li>
+                  <li><a href="https://formspree.io/f/mjkevvbr" class="text-gray-300 hover:text-white">Contact</a></li>
+               </ul>
+            </div>
+         </div>
+         <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+            <p class="text-gray-400">© 2024 Indian Valley Gutters. All Rights Reserved.</p>
+         </div>
       </div>
    </footer>
 
    <script>
       document.addEventListener('DOMContentLoaded', function() {
+         const mobileMenuButton = document.getElementById('mobile-menu-button');
+         const mobileMenu = document.getElementById('mobile-menu');
+
+         mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+         });
+
          // --- Firebase Initialization ---
          const firebaseConfig = {
             apiKey: "AIzaSyA84MPC1jnfsboWKPahpFyJ_1o35gDFPmw",
@@ -500,8 +552,6 @@
          }
 
          function updateBookButtonState() {
-            // Only enable the button if a date and time are selected.
-            // Form field validation will happen on submit.
             if (selectedDate && selectedTime) {
                bookButton.disabled = false;
             } else {
@@ -520,16 +570,14 @@
             fetchAppointmentsForMonth(currentDate.getFullYear(), currentDate.getMonth());
          });
 
-         // Add listeners to all form inputs to check button state
          bookingForm.querySelectorAll('input, select').forEach(input => {
             input.addEventListener('input', updateBookButtonState);
          });
 
          bookingForm.addEventListener('submit', async function(e) {
             e.preventDefault();
-            messageContainer.innerHTML = ''; // Clear old messages
+            messageContainer.innerHTML = '';
 
-            // Simple check for required fields
             if (!bookingForm.checkValidity()) {
                showMessage('error', 'Please fill out all required fields.');
                return;
@@ -555,18 +603,13 @@
             };
 
             try {
-               // Save the pending appointment to Firestore
                const docRef = await db.collection('appointments').add(appointmentData);
                console.log("Pending appointment saved with ID: ", docRef.id);
 
-               // **This is now your LIVE Stripe Payment Link**
                const stripePaymentLink = 'https://buy.stripe.com/5kQ6oGfsF5HW4tNcGVbbG0j';
 
-               // Pass the Firestore document ID to Stripe. This is crucial for linking the
-               // payment back to the appointment after it's successful.
                const redirectUrl = `${stripePaymentLink}?client_reference_id=${docRef.id}`;
 
-               // Redirect to Stripe for payment
                window.location.href = redirectUrl;
 
             } catch (error) {
