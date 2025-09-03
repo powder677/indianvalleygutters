@@ -1,63 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.indianvalleygutters.com/</loc>
+    <loc>https://www.indianvalleygutters.com/index.html</loc>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.indianvalleygutters.com/about.html</loc>
-    <priority>0.6</priority>
+    <loc>https://www.indianvalleygutters.com/pricing.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.indianvalleygutters.com/pricing.html</loc>
-    <priority>0.8</priority>
+    <loc>https://www.indianvalleygutters.com/about.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.indianvalleygutters.com/blog.html</loc>
-    <priority>0.7</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.indianvalleygutters.com/souderton-gutter-cleaning.html</loc>
-    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.indianvalleygutters.com/lansdale-gutter-cleaning.html</loc>
-    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.indianvalleygutters.com/harleysville-gutter-cleaning.html</loc>
-    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.indianvalleygutters.com/telford-gutter-cleaning.html</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.indianvalleygutters.com/diy-vs-professional-gutter-cleaning.html</loc>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.indianvalleygutters.com/how-often-to-clean-gutters-in-pa.html</loc>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.indianvalleygutters.com/top-5-signs-gutters-are-clogged.html</loc>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.indianvalleygutters.com/why-gutter-cleaning-prevents-damage.html</loc>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.indianvalleygutters.com/harleysville-gutter-guide.html</loc>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.indianvalleygutters.com/lansdale-pine-needle-guide.html</loc>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.indianvalleygutters.com/souderton-gutter-guide.html</loc>
-    <priority>0.5</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>
