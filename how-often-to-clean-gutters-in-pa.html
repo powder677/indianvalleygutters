@@ -25,7 +25,8 @@
       }
 
       .prose p,
-      .prose ul {
+      .prose ul,
+      .prose table {
          @apply text-gray-700 leading-relaxed;
       }
 
@@ -35,6 +36,15 @@
 
       .prose ul {
          @apply list-disc pl-6 space-y-2;
+      }
+
+      .prose table {
+         @apply w-full text-left border-collapse;
+      }
+
+      .prose th,
+      .prose td {
+         @apply p-2 border border-gray-300;
       }
    </style>
 </head>
@@ -90,6 +100,34 @@
             <h2>The Recommended Schedule for Local Homes</h2>
             <p>Based on our experience at Indian Valley Gutters, here is the optimal schedule for protecting your home.</p>
 
+            <h3>City-Specific Recommendations</h3>
+            <table>
+               <thead>
+                  <tr>
+                     <th>City</th>
+                     <th>Recommendation</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>Souderton</td>
+                     <td>Late fall cleaning is essential due to heavy leaf drop from oak and maple trees. Spring cleaning is also recommended.</td>
+                  </tr>
+                  <tr>
+                     <td>Lansdale</td>
+                     <td>Bi-annual cleaning (spring and fall) is the minimum due to year-round pine needle accumulation.</td>
+                  </tr>
+                  <tr>
+                     <td>Harleysville</td>
+                     <td>Bi-annual cleaning is recommended, with special attention to complex rooflines and multi-level gutter systems.</td>
+                  </tr>
+                  <tr>
+                     <td>Telford</td>
+                     <td>Bi-annual cleaning is recommended to manage debris from both rural and suburban landscapes.</td>
+                  </tr>
+               </tbody>
+            </table>
+
             <h3>Spring Cleaning (April-May): Post-Winter Recovery</h3>
             <p>This is arguably the most important cleaning of the year. After months of ice and snow, your gutters have endured significant stress. This cleaning removes debris from winter storms and the first seed pods of spring, preparing your system for heavy spring rains.</p>
 
@@ -112,6 +150,15 @@
                <p>Protect your home from Pennsylvania's challenging weather with properly timed gutter maintenance. The experienced team at Indian Valley Gutters understands the specific needs of homes in Souderton, Telford, and Harleysville and can recommend the optimal cleaning frequency for your property.</p>
                <a href="pricing.html" class="inline-block bg-green-500 text-white font-bold text-xl py-4 px-10 rounded-lg shadow-lg hover:bg-green-600 transition mt-4">Book Your Seasonal Cleaning Now</a>
             </div>
+
+            <div class="mt-12">
+               <h2 class="text-2xl font-bold text-gray-900 mb-4">Related Articles</h2>
+               <ul class="list-disc pl-6 space-y-2">
+                  <li><a href="why-gutter-cleaning-prevents-damage.html" class="text-blue-600 hover:underline">Why Gutter Cleaning Prevents Water Damage</a></li>
+                  <li><a href="top-5-signs-gutters-are-clogged.html" class="text-blue-600 hover:underline">Top 5 Signs Your Gutters Are Clogged</a></li>
+                  <li><a href="diy-vs-professional-gutter-cleaning.html" class="text-blue-600 hover:underline">DIY vs Professional Gutter Cleaning</a></li>
+               </ul>
+            </div>
          </article>
       </div>
    </main>
@@ -121,7 +168,7 @@
          <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
             <div>
                <h3 class="text-xl font-bold mb-4">Indian Valley <span class="text-blue-400">Gutters</span></h3>
-               <p class="text-gray-300 mb-4">203 E Broad St<br>Souderton, PA 18964</p>
+               <p class="text-gray-300 mb-4">203 East Broad St<br>Souderton, PA 18964</p>
                <p class="text-gray-300">Licensed & Insured</p>
             </div>
             <div>
