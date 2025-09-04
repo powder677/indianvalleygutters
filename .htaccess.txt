@@ -1,0 +1,6 @@
+# This rule permanently redirects any request for "index.html" to the root directory "/"
+# This prevents duplicate content issues for the homepage.
+
+RewriteEngine On
+RewriteCond %{THE_REQUEST} ^.*/index\.html
+RewriteRule ^(.*)index.html$ /$1 [R=301,L]
