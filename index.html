@@ -58,53 +58,105 @@
          "@context": "https://schema.org",
          "@type": "HomeAndConstructionBusiness",
          "name": "Indian Valley Gutters",
-         "image": "https://www.indianvalleygutters.com/souderton-pa-gutter-cleaning-service.png",
-         "@id": "https://www.indianvalleygutters.com",
+         "image": "https://www.indianvalleygutters.com/logo.png",
          "url": "https://www.indianvalleygutters.com",
-         "priceRange": "$$",
-         "areaServed": [{
-            "@type": "Place",
-            "name": "Souderton, PA"
-         }, {
-            "@type": "Place",
-            "name": "Lansdale, PA"
-         }, {
-            "@type": "Place",
-            "name": "Harleysville, PA"
-         }, {
-            "@type": "Place",
-            "name": "Telford, PA"
-         }, {
-            "@type": "Place",
-            "name": "Indian Valley, PA"
-         }],
-         "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "Gutter Cleaning Services",
-            "itemListElement": [{
-               "@type": "Offer",
-               "itemOffered": {
-                  "@type": "Service",
-                  "name": "1-Story Gutter Cleaning"
-               },
-               "price": "199",
-               "priceCurrency": "USD"
-            }, {
-               "@type": "Offer",
-               "itemOffered": {
-                  "@type": "Service",
-                  "name": "2-Story Gutter Cleaning"
-               },
-               "price": "269",
-               "priceCurrency": "USD"
-            }]
+         "telephone": "+1-267-446-4784",
+         "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "203 East Broad St",
+            "addressLocality": "Souderton",
+            "addressRegion": "PA",
+            "postalCode": "18964",
+            "addressCountry": "US"
          },
+         "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "40.3087",
+            "longitude": "-75.2518"
+         },
+         "areaServed": [{
+               "@type": "City",
+               "name": "Souderton",
+               "containedInPlace": {
+                  "@type": "State",
+                  "name": "Pennsylvania"
+               }
+            },
+            {
+               "@type": "City",
+               "name": "Lansdale",
+               "containedInPlace": {
+                  "@type": "State",
+                  "name": "Pennsylvania"
+               }
+            },
+            {
+               "@type": "City",
+               "name": "Harleysville",
+               "containedInPlace": {
+                  "@type": "State",
+                  "name": "Pennsylvania"
+               }
+            },
+            {
+               "@type": "City",
+               "name": "Telford",
+               "containedInPlace": {
+                  "@type": "State",
+                  "name": "Pennsylvania"
+               }
+            }
+         ],
          "openingHoursSpecification": {
             "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            "dayOfWeek": [
+               "Monday",
+               "Tuesday",
+               "Wednesday",
+               "Thursday",
+               "Friday",
+               "Saturday"
+            ],
             "opens": "08:00",
             "closes": "18:00"
-         }
+         },
+         "priceRange": "$$",
+         "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Gutter Services",
+            "itemListElement": [{
+                  "@type": "Offer",
+                  "itemOffered": {
+                     "@type": "Service",
+                     "name": "1-Story Gutter Cleaning",
+                     "description": "Complete gutter cleaning service for single-story homes"
+                  },
+                  "price": "199",
+                  "priceCurrency": "USD"
+               },
+               {
+                  "@type": "Offer",
+                  "itemOffered": {
+                     "@type": "Service",
+                     "name": "2-Story Gutter Cleaning",
+                     "description": "Complete gutter cleaning service for two-story homes"
+                  },
+                  "price": "269",
+                  "priceCurrency": "USD"
+               }
+            ]
+         },
+         "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5",
+            "reviewCount": "25",
+            "bestRating": "5",
+            "worstRating": "1"
+         },
+         "sameAs": [
+            "https://www.facebook.com/IndianValleyGutters",
+            "https://www.google.com/maps/place/YourGMBListing"
+         ]
       }
    </script>
 </head>
