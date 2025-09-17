@@ -92,13 +92,7 @@
          },
          "openingHoursSpecification": {
             "@type": "OpeningHoursSpecification",
-            "dayOfWeek": [
-               "Monday",
-               "Tuesday",
-               "Wednesday",
-               "Thursday",
-               "Friday"
-            ],
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
             "opens": "08:00",
             "closes": "17:00"
          },
@@ -111,13 +105,7 @@
             },
             "geoRadius": "25000"
          },
-         "areaServed": [
-            "Souderton, PA",
-            "Lansdale, PA",
-            "Telford, PA",
-            "Harleysville, PA",
-            "Montgomery County, PA"
-         ],
+         "areaServed": ["Souderton, PA", "Lansdale, PA", "Telford, PA", "Harleysville, PA", "Montgomery County, PA"],
          "priceRange": "$199-$269"
       }
    </script>
@@ -247,7 +235,6 @@
    <script>
       const mobileMenuButton = document.getElementById('mobile-menu-button');
       const mobileMenu = document.getElementById('mobile-menu');
-
       mobileMenuButton.addEventListener('click', () => {
          mobileMenu.classList.toggle('hidden');
       });
