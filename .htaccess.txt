@@ -3,3 +3,7 @@
 RewriteEngine On
 RewriteCond %{THE_REQUEST} ^.*/index\.html
 RewriteRule ^(.*)index.html$ /$1 [R=301,L]
+
+# 301 Redirects for renamed pages
+RewriteRule ^pricing\.html$ /gutter-cleaning-prices-souderton-montgomery-county-pa.html [R=301,L]
+RewriteRule ^roofer-vs-specialist\.html$ /gutter-cleaning-souderton-pa-specialist-vs-roofer.html [R=301,L]
