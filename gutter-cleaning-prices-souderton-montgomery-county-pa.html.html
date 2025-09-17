@@ -16,6 +16,7 @@
    <link rel="canonical" href="https://www.indianvalleygutters.com/gutter-cleaning-prices-souderton-montgomery-county-pa.html">
 
    <script src="https://cdn.tailwindcss.com"></script>
+
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
@@ -63,6 +64,7 @@
 
       .calendar-day.has-appointments {
          background-color: #fef9c3;
+         /* Lighter yellow for partially booked */
       }
 
       .calendar-day.fully-booked {
@@ -84,6 +86,7 @@
          border-radius: 50%;
          margin: 1px;
          background-color: #f59e0b;
+         /* Orange dot for booked slots */
       }
 
       .time-slot {
@@ -149,7 +152,13 @@
          },
          "openingHoursSpecification": {
             "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "dayOfWeek": [
+               "Monday",
+               "Tuesday",
+               "Wednesday",
+               "Thursday",
+               "Friday"
+            ],
             "opens": "08:00",
             "closes": "17:00"
          },
@@ -162,7 +171,13 @@
             },
             "geoRadius": "25000"
          },
-         "areaServed": ["Souderton, PA", "Lansdale, PA", "Telford, PA", "Harleysville, PA", "Montgomery County, PA"],
+         "areaServed": [
+            "Souderton, PA",
+            "Lansdale, PA",
+            "Telford, PA",
+            "Harleysville, PA",
+            "Montgomery County, PA"
+         ],
          "priceRange": "$199-$269"
       }
    </script>
@@ -222,6 +237,7 @@
 
    <main class="py-16 md:py-24">
       <div class="container mx-auto px-6">
+
          <div class="text-center mb-12 md:mb-16">
             <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">Simple, Upfront Pricing</h1>
             <p class="text-lg text-gray-600 max-w-2xl mx-auto">No hidden fees, no complicated quotes. Just straightforward pricing to get the job done right.</p>
@@ -297,12 +313,13 @@
                </div>
             </div>
          </section>
-
          <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 mb-16 max-w-4xl mx-auto">
             <div class="flex">
-               <div class="flex-shrink-0"><svg class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+               <div class="flex-shrink-0">
+                  <svg class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
                      <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
-                  </svg></div>
+                  </svg>
+               </div>
                <div class="ml-3">
                   <h3 class="text-lg font-medium text-yellow-800">Payment Information</h3>
                   <div class="mt-2 text-sm text-yellow-700">
@@ -314,12 +331,16 @@
 
          <section id="booking" class="bg-white p-4 sm:p-8 rounded-lg shadow-md max-w-7xl mx-auto mb-16">
             <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">Schedule Your Service Instantly</h2>
+
             <div id="messageContainer" class="mb-6"></div>
+
             <div id="loadingIndicator" class="text-center mb-6 hidden">
                <p class="text-gray-600">Loading available appointments...</p>
             </div>
+
             <form id="bookingForm">
                <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+
                   <div class="lg:col-span-3">
                      <div class="bg-gray-50 p-2 sm:p-6 rounded-lg shadow-inner">
                         <div class="flex items-center justify-between mb-6">
@@ -340,7 +361,8 @@
                            <div class="font-semibold text-gray-700 p-1 sm:p-3">Fri</div>
                            <div class="font-semibold text-gray-700 p-1 sm:p-3">Sat</div>
                         </div>
-                        <div id="calendarGrid" class="grid grid-cols-7 gap-1 sm:gap-2 text-center mb-6"></div>
+                        <div id="calendarGrid" class="grid grid-cols-7 gap-1 sm:gap-2 text-center mb-6">
+                        </div>
                         <div class="flex flex-wrap items-center justify-center space-x-4 text-xs sm:text-sm">
                            <div class="flex items-center my-1">
                               <div class="w-4 h-4 bg-white border-2 border-gray-300 rounded mr-2"></div><span>Available</span>
@@ -353,14 +375,18 @@
                            </div>
                         </div>
                      </div>
+
                      <div id="timeSlotsContainer" class="mt-6 hidden">
                         <h4 class="font-bold text-xl mb-4">Available Times for <span id="selectedDateText" class="text-blue-600"></span>:</h4>
-                        <div id="timeSlots" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3"></div>
+                        <div id="timeSlots" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+                        </div>
                      </div>
                   </div>
+
                   <div class="lg:col-span-1">
                      <div class="bg-blue-50 p-6 rounded-lg sticky top-28 space-y-4">
                         <h3 class="text-xl font-bold text-gray-900 border-b pb-2">Your Appointment</h3>
+
                         <div class="bg-white p-3 rounded-md">
                            <p class="text-sm font-medium text-gray-600">Selected Date:</p>
                            <p id="summaryDate" class="font-bold text-lg text-blue-700">Select a date</p>
@@ -369,6 +395,7 @@
                            <p class="text-sm font-medium text-gray-600">Selected Time:</p>
                            <p id="summaryTime" class="font-bold text-lg text-blue-700">Select a time</p>
                         </div>
+
                         <div>
                            <label for="serviceType" class="block text-sm font-medium text-gray-700 mb-1">Service Type *</label>
                            <select id="serviceType" name="serviceType" required class="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500">
@@ -393,7 +420,10 @@
                            <label for="address" class="block text-sm font-medium text-gray-700 mb-1">Service Address *</label>
                            <input type="text" name="address" id="address" required class="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500">
                         </div>
-                        <button type="submit" id="bookButton" class="w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-lg shadow-lg hover:bg-blue-700 transition transform hover:scale-105 disabled:bg-gray-400 disabled:cursor-not-allowed disabled:transform-none" disabled>Proceed to Deposit</button>
+
+                        <button type="submit" id="bookButton" class="w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-lg shadow-lg hover:bg-blue-700 transition transform hover:scale-105 disabled:bg-gray-400 disabled:cursor-not-allowed disabled:transform-none" disabled>
+                           Proceed to Deposit
+                        </button>
                      </div>
                   </div>
                </div>
@@ -476,9 +506,12 @@
       document.addEventListener('DOMContentLoaded', function() {
          const mobileMenuButton = document.getElementById('mobile-menu-button');
          const mobileMenu = document.getElementById('mobile-menu');
+
          mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
          });
+
+         // --- Firebase Initialization ---
          const firebaseConfig = {
             apiKey: "AIzaSyA84MPC1jnfsboWKPahpFyJ_1o35gDFPmw",
             authDomain: "indian-valley-gutters.firebaseapp.com",
@@ -489,6 +522,8 @@
          };
          firebase.initializeApp(firebaseConfig);
          const db = firebase.firestore();
+
+         // --- DOM Elements ---
          const calendarGrid = document.getElementById('calendarGrid');
          const monthYearEl = document.getElementById('monthYear');
          const prevMonthBtn = document.getElementById('prevMonth');
@@ -503,25 +538,39 @@
          const serviceTypeSelect = document.getElementById('serviceType');
          const loadingIndicator = document.getElementById('loadingIndicator');
          const messageContainer = document.getElementById('messageContainer');
+
+         // --- State Management ---
          let currentDate = new Date();
-         currentDate.setDate(1);
+         currentDate.setDate(1); // Start with the first day of the month
          let selectedDate = null;
          let selectedTime = null;
-         let appointments = {};
+         let appointments = {}; // Cache for appointments: { 'YYYY-MM-DD': count }
+
+         // --- Constants ---
          const APPOINTMENTS_PER_DAY = 5;
-         const BOOKED_UNTIL_DATE = new Date(new Date().getFullYear(), 8, 14);
+         const BOOKED_UNTIL_DATE = new Date(new Date().getFullYear(), 8, 14); // September is month 8 (0-indexed)
+
+         // --- Main Functions ---
          async function fetchAppointmentsForMonth(year, month) {
             loadingIndicator.classList.remove('hidden');
             const startDate = new Date(year, month, 1);
             const endDate = new Date(year, month + 1, 0);
+
             const startStr = `${year}-${String(month + 1).padStart(2, '0')}-01`;
             const endStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(endDate.getDate()).padStart(2, '0')}`;
+
             try {
-               const snapshot = await db.collection('appointments').where('date', '>=', startStr).where('date', '<=', endStr).get();
+               const snapshot = await db.collection('appointments')
+                  .where('date', '>=', startStr)
+                  .where('date', '<=', endStr)
+                  .get();
+
+               // Reset counts for the current month
                for (let i = 1; i <= endDate.getDate(); i++) {
                   const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
                   appointments[dateStr] = 0;
                }
+
                snapshot.forEach(doc => {
                   const date = doc.data().date;
                   if (appointments[date] !== undefined) {
@@ -540,26 +589,32 @@
          function generateCalendar(year, month) {
             calendarGrid.innerHTML = '';
             monthYearEl.textContent = `${new Date(year, month).toLocaleString('default', { month: 'long' })} ${year}`;
+
             const firstDay = new Date(year, month, 1).getDay();
             const daysInMonth = new Date(year, month + 1, 0).getDate();
             const today = new Date();
-            today.setHours(0, 0, 0, 0);
+            today.setHours(0, 0, 0, 0); // Normalize today's date
+
             for (let i = 0; i < firstDay; i++) {
                calendarGrid.innerHTML += `<div class="other-month"></div>`;
             }
+
             for (let day = 1; day <= daysInMonth; day++) {
                const dayEl = document.createElement('div');
                const date = new Date(year, month, day);
-               date.setHours(0, 0, 0, 0);
+               date.setHours(0, 0, 0, 0); // Normalize loop date
                const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+
                dayEl.classList.add('calendar-day', 'rounded-lg', 'text-lg', 'font-semibold');
                dayEl.innerHTML = `<span>${day}</span><div class="appointment-dot-container"></div>`;
                dayEl.dataset.date = dateStr;
+
                const appointmentCount = appointments[dateStr] || 0;
                const dotsContainer = dayEl.querySelector('.appointment-dot-container');
                for (let i = 0; i < appointmentCount; i++) {
                   dotsContainer.innerHTML += `<div class="appointment-dot"></div>`;
                }
+
                if (date < today || date <= BOOKED_UNTIL_DATE) {
                   dayEl.classList.add('disabled', 'fully-booked');
                   dayEl.title = "This date is unavailable.";
@@ -572,9 +627,11 @@
                   }
                   dayEl.addEventListener('click', () => handleDateClick(dateStr, dayEl));
                }
+
                if (selectedDate === dateStr) {
                   dayEl.classList.add('selected');
                }
+
                calendarGrid.appendChild(dayEl);
             }
          }
@@ -584,7 +641,8 @@
             if (prevSelected) prevSelected.classList.remove('selected');
             dayEl.classList.add('selected');
             selectedDate = dateStr;
-            selectedTime = null;
+            selectedTime = null; // Reset time when date changes
+
             selectedDateText.textContent = new Date(dateStr + 'T00:00:00').toLocaleDateString('en-US', {
                weekday: 'long',
                year: 'numeric',
@@ -597,15 +655,18 @@
             generateTimeSlots(dateStr);
             updateBookButtonState();
          }
+
          async function generateTimeSlots(dateStr) {
             timeSlotsEl.innerHTML = '';
             const availableSlots = ["09:00 AM", "11:00 AM", "01:00 PM", "03:00 PM", "05:00 PM"];
+
             availableSlots.forEach(time => {
                const timeSlotEl = document.createElement('button');
                timeSlotEl.type = 'button';
                timeSlotEl.classList.add('time-slot', 'p-3', 'rounded-md', 'font-semibold', 'border');
                timeSlotEl.textContent = time;
                timeSlotEl.dataset.time = time;
+
                timeSlotEl.addEventListener('click', () => {
                   const prevSelected = document.querySelector('.time-slot.selected');
                   if (prevSelected) prevSelected.classList.remove('selected');
@@ -633,20 +694,26 @@
                bookButton.disabled = true;
             }
          }
+
+         // --- Event Listeners ---
          prevMonthBtn.addEventListener('click', () => {
             currentDate.setMonth(currentDate.getMonth() - 1);
             fetchAppointmentsForMonth(currentDate.getFullYear(), currentDate.getMonth());
          });
+
          nextMonthBtn.addEventListener('click', () => {
             currentDate.setMonth(currentDate.getMonth() + 1);
             fetchAppointmentsForMonth(currentDate.getFullYear(), currentDate.getMonth());
          });
+
          bookingForm.querySelectorAll('input, select').forEach(input => {
             input.addEventListener('input', updateBookButtonState);
          });
+
          bookingForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             messageContainer.innerHTML = '';
+
             if (!bookingForm.checkValidity()) {
                showMessage('error', 'Please fill out all required fields.');
                return;
@@ -655,8 +722,10 @@
                showMessage('error', 'Please select an available date and time slot.');
                return;
             }
+
             bookButton.disabled = true;
             bookButton.textContent = 'Booking...';
+
             const appointmentData = {
                service: document.getElementById('serviceType').value,
                date: selectedDate,
@@ -668,12 +737,17 @@
                status: 'pending_payment',
                createdAt: firebase.firestore.FieldValue.serverTimestamp()
             };
+
             try {
                const docRef = await db.collection('appointments').add(appointmentData);
                console.log("Pending appointment saved with ID: ", docRef.id);
+
                const stripePaymentLink = 'https://buy.stripe.com/5kQ6oGfsF5HW4tNcGVbbG0j';
+
                const redirectUrl = `${stripePaymentLink}?client_reference_id=${docRef.id}`;
+
                window.location.href = redirectUrl;
+
             } catch (error) {
                console.error("Error creating appointment: ", error);
                showMessage('error', 'There was an error booking your appointment. Please try again.');
@@ -681,6 +755,8 @@
                bookButton.textContent = 'Proceed to Deposit';
             }
          });
+
+         // --- Initial Load ---
          fetchAppointmentsForMonth(currentDate.getFullYear(), currentDate.getMonth());
       });
    </script>
