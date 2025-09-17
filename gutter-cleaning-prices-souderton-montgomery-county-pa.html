@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Gutter Cleaning Prices Souderton PA | $199 Flat Rate | Montgomery County | Indian Valley Gutters</title>
+   <meta name="description" content="Transparent gutter cleaning pricing in Souderton PA. $199 for 1-story, $269 for 2-story homes. Serving Montgomery County. Book online instantly - no hidden fees.">
+   <meta name="keywords" content="gutter cleaning prices Souderton PA, Montgomery County gutter cleaning cost, affordable gutter cleaning, flat rate gutter cleaning, Lansdale Telford Harleysville">
+
+   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+   <link rel="shortcut icon" href="/favicon.ico">
+
+   <link rel="canonical" href="https://www.indianvalleygutters.com/gutter-cleaning-prices-souderton-montgomery-county-pa.html">
+
+   <script src="https://cdn.tailwindcss.com"></script>
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+   <style>
+      body {
+         font-family: 'Inter', sans-serif;
+      }
+
+      .calendar-day {
+         transition: all 0.2s ease-in-out;
+         min-height: 80px;
+         display: flex;
+         flex-direction: column;
+         justify-content: flex-start;
+         align-items: center;
+         padding: 8px 4px;
+      }
+
+      .calendar-day:not(.disabled):not(.other-month):hover {
+         background-color: #dbeafe;
+         cursor: pointer;
+         transform: scale(1.02);
+      }
+
+      .calendar-day.selected {
+         background-color: #2563eb;
+         color: white;
+      }
+
+      .calendar-day.disabled {
+         color: #9ca3af;
+         cursor: not-allowed;
+         background-color: #f3f4f6;
+         opacity: 0.6;
+      }
+
+      .calendar-day.other-month {
+         color: #d1d5db;
+         background-color: #f9fafb;
+      }
+
+      .calendar-day.has-appointments {
+         background-color: #fef9c3;
+         /* Lighter yellow for partially booked */
+      }
+
+      .calendar-day.fully-booked {
+         background-color: #fee2e2;
+         color: #9ca3af;
+         cursor: not-allowed;
+      }
+
+      .appointment-dot-container {
+         display: flex;
+         flex-wrap: wrap;
+         justify-content: center;
+         padding-top: 4px;
+      }
+
+      .appointment-dot {
+         width: 8px;
+         height: 8px;
+         border-radius: 50%;
+         margin: 1px;
+         background-color: #f59e0b;
+         /* Orange dot for booked slots */
+      }
+
+      .time-slot {
+         transition: all 0.2s ease-in-out;
+      }
+
+      .time-slot:not(.booked):hover {
+         background-color: #dbeafe;
+         cursor: pointer;
+         transform: translateY(-2px);
+      }
+
+      .time-slot.selected {
+         background-color: #2563eb;
+         color: white;
+      }
+
+      .time-slot.booked {
+         background-color: #fca5a5;
+         color: #991b1b;
+         cursor: not-allowed;
+         opacity: 0.7;
+      }
+
+      .success-message {
+         background-color: #dcfce7;
+         border: 1px solid #16a34a;
+         color: #166534;
+      }
+
+      .error-message {
+         background-color: #fef2f2;
+         border: 1px solid #dc2626;
+         color: #991b1b;
+      }
+
+      .loading {
+         opacity: 0.6;
+         pointer-events: none;
+      }
+   </style>
+   <script type="application/ld+json">
+      {
+         "@context": "https://schema.org",
+         "@type": "LocalBusiness",
+         "name": "Indian Valley Gutters",
+         "image": "https://www.indianvalleygutters.com/logo.png",
+         "@id": "https://www.indianvalleygutters.com",
+         "url": "https://www.indianvalleygutters.com",
+         "telephone": "(215) 555-0123",
+         "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "203 East Broad St",
+            "addressLocality": "Souderton",
+            "addressRegion": "PA",
+            "postalCode": "18964",
+            "addressCountry": "US"
+         },
+         "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 40.3084,
+            "longitude": -75.3257
+         },
+         "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+               "Monday",
+               "Tuesday",
+               "Wednesday",
+               "Thursday",
+               "Friday"
+            ],
+            "opens": "08:00",
+            "closes": "17:00"
+         },
+         "serviceArea": {
+            "@type": "GeoCircle",
+            "geoMidpoint": {
+               "@type": "GeoCoordinates",
+               "latitude": 40.3084,
+               "longitude": -75.3257
+            },
+            "geoRadius": "25000"
+         },
+         "areaServed": [
+            "Souderton, PA",
+            "Lansdale, PA",
+            "Telford, PA",
+            "Harleysville, PA",
+            "Montgomery County, PA"
+         ],
+         "priceRange": "$199-$269"
+      }
+   </script>
+   <script type="application/ld+json">
+      {
+         "@context": "https://schema.org",
+         "@type": "FAQPage",
+         "mainEntity": [{
+               "@type": "Question",
+               "name": "How often should I have my gutters cleaned in Pennsylvania?",
+               "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "In Montgomery County, we recommend gutter cleaning twice per year - once in late spring after trees finish dropping seeds and debris, and once in late fall after leaves have fallen."
+               }
+            },
+            {
+               "@type": "Question",
+               "name": "What makes your pricing different from other gutter cleaning companies?",
+               "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Most companies require an in-person estimate and quote based on linear feet of gutters. Our flat-rate system eliminates the guesswork - you know exactly what you'll pay based simply on whether you have a 1-story or 2-story home."
+               }
+            }
+         ]
+      }
+   </script>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+   <header class="bg-white shadow-sm sticky top-0 z-50">
+      <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+         <a href="/" class="text-2xl font-bold text-gray-900">
+            Indian Valley <span class="text-blue-600">Gutters</span>
+         </a>
+         <div class="hidden md:flex space-x-6 items-center">
+            <a href="/" class="text-gray-600 hover:text-blue-600">Home</a>
+            <a href="gutter-cleaning-prices-souderton-montgomery-county-pa.html" class="text-blue-600 font-semibold">Pricing & Booking</a>
+            <a href="blog.html" class="text-gray-600 hover:text-blue-600">Blog</a>
+            <a href="about.html" class="text-gray-600 hover:text-blue-600">About Us</a>
+         </div>
+         <div class="md:hidden">
+            <button id="mobile-menu-button" class="text-gray-600 hover:text-blue-600 focus:outline-none">
+               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+               </svg>
+            </button>
+         </div>
+      </nav>
+      <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
+         <a href="/" class="block py-2 px-4 text-sm hover:bg-gray-50">Home</a>
+         <a href="gutter-cleaning-prices-souderton-montgomery-county-pa.html" class="block py-2 px-4 text-sm text-blue-600">Pricing & Booking</a>
+         <a href="blog.html" class="block py-2 px-4 text-sm hover:bg-gray-50">Blog</a>
+         <a href="about.html" class="block py-2 px-4 text-sm hover:bg-gray-50">About Us</a>
+      </div>
+   </header>
+
+   <main class="py-16 md:py-24">
+      <div class="container mx-auto px-6">
+
+         <div class="text-center mb-12 md:mb-16">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">Simple, Upfront Pricing</h1>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">No hidden fees, no complicated quotes. Just straightforward pricing to get the job done right.</p>
+         </div>
+
+         <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
+            <div class="bg-white rounded-lg shadow-lg p-8 border-t-4 border-blue-600">
+               <h2 class="text-2xl font-bold text-gray-900 mb-2">1-Story Home</h2>
+               <p class="text-5xl font-extrabold text-gray-900 mb-4">$199</p>
+               <p class="text-gray-600 mb-6">Complete gutter and downspout cleaning for any single-story house.</p>
+               <ul class="space-y-2 text-gray-700 mb-8">
+                  <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                     </svg>Full Gutter System Cleanout</li>
+                  <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                     </svg>Downspout Flushing</li>
+                  <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                     </svg>Debris Bagged & Removed</li>
+                  <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                     </svg>Post-Service Cleanup</li>
+               </ul>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-8 border-t-4 border-blue-800">
+               <h2 class="text-2xl font-bold text-gray-900 mb-2">2-Story Home</h2>
+               <p class="text-5xl font-extrabold text-gray-900 mb-4">$269</p>
+               <p class="text-gray-600 mb-6">Complete gutter and downspout cleaning for any two-story house.</p>
+               <ul class="space-y-2 text-gray-700 mb-8">
+                  <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                     </svg>Full Gutter System Cleanout</li>
+                  <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                     </svg>Downspout Flushing</li>
+                  <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                     </svg>Debris Bagged & Removed</li>
+                  <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                     </svg>Post-Service Cleanup</li>
+               </ul>
+            </div>
+         </div>
+
+         <section class="py-12 bg-gray-50">
+            <div class="container mx-auto px-6 max-w-4xl">
+               <div class="text-center mb-8">
+                  <h2 class="text-3xl font-bold text-gray-900 mb-4">Why Our Flat-Rate Pricing Works Better</h2>
+                  <p class="text-lg text-gray-600">No surprises, no upsells, no complicated estimates. Just honest pricing for quality work.</p>
+               </div>
+               <div class="grid md:grid-cols-2 gap-8 mb-12">
+                  <div class="bg-white p-6 rounded-lg shadow-sm">
+                     <h3 class="text-xl font-semibold text-gray-900 mb-3">What's Included in Every Service</h3>
+                     <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span>Complete removal of all leaves, debris, and buildup from gutters</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span>Thorough flushing of all downspouts to ensure proper water flow</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span>Professional bagging and removal of all debris from your property</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span>Complete cleanup of work area and surrounding landscape</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span>Visual inspection and basic condition report of your gutter system</li>
+                     </ul>
+                  </div>
+                  <div class="bg-white p-6 rounded-lg shadow-sm">
+                     <h3 class="text-xl font-semibold text-gray-900 mb-3">How We Determine Your Price</h3>
+                     <p class="text-gray-700 mb-4">Our flat-rate pricing is based on extensive experience serving Montgomery County homes. Here's what we consider:</p>
+                     <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-start"><span class="text-blue-500 mr-2">•</span><strong>Home Height:</strong> 1-story vs 2-story determines safety equipment and time needed</li>
+                        <li class="flex items-start"><span class="text-blue-500 mr-2">•</span><strong>Standard Service:</strong> All homes receive the same thorough cleaning process</li>
+                        <li class="flex items-start"><span class="text-blue-500 mr-2">•</span><strong>No Hidden Factors:</strong> Gutter length, debris amount, or property size don't affect price</li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 mb-16 max-w-4xl mx-auto">
+            <div class="flex">
+               <div class="flex-shrink-0">
+                  <svg class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                     <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                  </svg>
+               </div>
+               <div class="ml-3">
+                  <h3 class="text-lg font-medium text-yellow-800">Payment Information</h3>
+                  <div class="mt-2 text-sm text-yellow-700">
+                     <p><strong>A $50 deposit is required to book your appointment.</strong> After filling out your details, you will be redirected to our secure payment page. The remaining balance is due upon service completion.</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <section id="booking" class="bg-white p-4 sm:p-8 rounded-lg shadow-md max-w-7xl mx-auto mb-16">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">Schedule Your Service Instantly</h2>
+
+            <div id="messageContainer" class="mb-6"></div>
+
+            <div id="loadingIndicator" class="text-center mb-6 hidden">
+               <p class="text-gray-600">Loading available appointments...</p>
+            </div>
+
+            <form id="bookingForm">
+               <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+
+                  <div class="lg:col-span-3">
+                     <div class="bg-gray-50 p-2 sm:p-6 rounded-lg shadow-inner">
+                        <div class="flex items-center justify-between mb-6">
+                           <button type="button" id="prevMonth" class="p-3 rounded-full hover:bg-gray-200 transition-colors"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                              </svg></button>
+                           <h3 id="monthYear" class="text-xl sm:text-2xl font-bold text-gray-900 text-center"></h3>
+                           <button type="button" id="nextMonth" class="p-3 rounded-full hover:bg-gray-200 transition-colors"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                              </svg></button>
+                        </div>
+                        <div class="grid grid-cols-7 gap-1 sm:gap-2 text-center mb-4 text-xs sm:text-base">
+                           <div class="font-semibold text-gray-700 p-1 sm:p-3">Sun</div>
+                           <div class="font-semibold text-gray-700 p-1 sm:p-3">Mon</div>
+                           <div class="font-semibold text-gray-700 p-1 sm:p-3">Tue</div>
+                           <div class="font-semibold text-gray-700 p-1 sm:p-3">Wed</div>
+                           <div class="font-semibold text-gray-700 p-1 sm:p-3">Thu</div>
+                           <div class="font-semibold text-gray-700 p-1 sm:p-3">Fri</div>
+                           <div class="font-semibold text-gray-700 p-1 sm:p-3">Sat</div>
+                        </div>
+                        <div id="calendarGrid" class="grid grid-cols-7 gap-1 sm:gap-2 text-center mb-6">
+                        </div>
+                        <div class="flex flex-wrap items-center justify-center space-x-4 text-xs sm:text-sm">
+                           <div class="flex items-center my-1">
+                              <div class="w-4 h-4 bg-white border-2 border-gray-300 rounded mr-2"></div><span>Available</span>
+                           </div>
+                           <div class="flex items-center my-1">
+                              <div class="w-4 h-4 bg-yellow-200 rounded mr-2"></div><span>Partially Booked</span>
+                           </div>
+                           <div class="flex items-center my-1">
+                              <div class="w-4 h-4 bg-red-200 rounded mr-2"></div><span>Fully Booked</span>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div id="timeSlotsContainer" class="mt-6 hidden">
+                        <h4 class="font-bold text-xl mb-4">Available Times for <span id="selectedDateText" class="text-blue-600"></span>:</h4>
+                        <div id="timeSlots" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+                        </div>
+                     </div>
+                  </div>
+
+                  <div class="lg:col-span-1">
+                     <div class="bg-blue-50 p-6 rounded-lg sticky top-28 space-y-4">
+                        <h3 class="text-xl font-bold text-gray-900 border-b pb-2">Your Appointment</h3>
+
+                        <div class="bg-white p-3 rounded-md">
+                           <p class="text-sm font-medium text-gray-600">Selected Date:</p>
+                           <p id="summaryDate" class="font-bold text-lg text-blue-700">Select a date</p>
+                        </div>
+                        <div class="bg-white p-3 rounded-md">
+                           <p class="text-sm font-medium text-gray-600">Selected Time:</p>
+                           <p id="summaryTime" class="font-bold text-lg text-blue-700">Select a time</p>
+                        </div>
+
+                        <div>
+                           <label for="serviceType" class="block text-sm font-medium text-gray-700 mb-1">Service Type *</label>
+                           <select id="serviceType" name="serviceType" required class="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                              <option value="">Select service...</option>
+                              <option value="1-story">1-Story - $199</option>
+                              <option value="2-story">2-Story - $269</option>
+                           </select>
+                        </div>
+                        <div>
+                           <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
+                           <input type="text" name="name" id="name" required class="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                        </div>
+                        <div>
+                           <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+                           <input type="email" name="email" id="email" required class="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                        </div>
+                        <div>
+                           <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone *</label>
+                           <input type="tel" name="phone" id="phone" required class="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                        </div>
+                        <div>
+                           <label for="address" class="block text-sm font-medium text-gray-700 mb-1">Service Address *</label>
+                           <input type="text" name="address" id="address" required class="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                        </div>
+
+                        <button type="submit" id="bookButton" class="w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-lg shadow-lg hover:bg-blue-700 transition transform hover:scale-105 disabled:bg-gray-400 disabled:cursor-not-allowed disabled:transform-none" disabled>
+                           Proceed to Deposit
+                        </button>
+                     </div>
+                  </div>
+               </div>
+            </form>
+         </section>
+      </div>
+
+      <section class="py-16 bg-white">
+         <div class="container mx-auto px-6 max-w-4xl">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">Frequently Asked Questions About Our Gutter Cleaning Service</h2>
+            <div class="space-y-6">
+               <div class="bg-gray-50 p-6 rounded-lg">
+                  <h3 class="text-xl font-semibold text-gray-900 mb-2">How often should I have my gutters cleaned in Pennsylvania?</h3>
+                  <p class="text-gray-700">In Montgomery County, we recommend gutter cleaning twice per year - once in late spring after trees finish dropping seeds and debris, and once in late fall after leaves have fallen. Homes with many trees nearby may benefit from additional cleanings.</p>
+               </div>
+               <div class="bg-gray-50 p-6 rounded-lg">
+                  <h3 class="text-xl font-semibold text-gray-900 mb-2">What if my gutters need repairs during the cleaning?</h3>
+                  <p class="text-gray-700">We'll identify any issues during our service and provide you with a separate estimate for repairs. Our cleaning price never changes, but we'll always let you know if we spot problems that need attention to keep your gutter system working properly.</p>
+               </div>
+               <div class="bg-gray-50 p-6 rounded-lg">
+                  <h3 class="text-xl font-semibold text-gray-900 mb-2">Do you offer gutter cleaning services year-round?</h3>
+                  <p class="text-gray-700">Yes! While fall is our busiest season, we provide gutter cleaning services throughout the year in Souderton, Lansdale, Telford, Harleysville, and surrounding Montgomery County areas. Weather permitting, we can clean your gutters in any season.</p>
+               </div>
+               <div class="bg-gray-50 p-6 rounded-lg">
+                  <h3 class="text-xl font-semibold text-gray-900 mb-2">What makes your pricing different from other gutter cleaning companies?</h3>
+                  <p class="text-gray-700">Most companies require an in-person estimate and quote based on linear feet of gutters, home complexity, or debris amount. Our flat-rate system eliminates the guesswork - you know exactly what you'll pay based simply on whether you have a 1-story or 2-story home. No waiting for estimates, no surprise charges.</p>
+               </div>
+               <div class="bg-gray-50 p-6 rounded-lg">
+                  <h3 class="text-xl font-semibold text-gray-900 mb-2">Are you insured for gutter cleaning work?</h3>
+                  <p class="text-gray-700">Absolutely. Indian Valley Gutters carries full liability insurance and workers' compensation coverage. We're properly licensed and insured to work on your property, giving you peace of mind during every service call.</p>
+               </div>
+               <div class="bg-gray-50 p-6 rounded-lg">
+                  <h3 class="text-xl font-semibold text-gray-900 mb-2">How do I prepare my property for gutter cleaning?</h3>
+                  <p class="text-gray-700">Very little preparation is needed! Simply ensure we have access to power for our equipment and clear any vehicles or obstacles from around your home's perimeter. We handle all the setup, cleanup, and debris removal as part of our service.</p>
+               </div>
+            </div>
+         </div>
+      </section>
+   </main>
+
+   <footer class="bg-gray-900 text-white">
+      <div class="container mx-auto px-6 py-12">
+         <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
+            <div>
+               <h3 class="text-xl font-bold mb-4">Indian Valley <span class="text-blue-400">Gutters</span></h3>
+               <p class="text-gray-300 mb-4">
+                  203 East Broad St<br>
+                  Souderton, PA 18964
+               </p>
+               <p class="text-gray-300">Licensed & Insured</p>
+            </div>
+            <div>
+               <h3 class="text-lg font-bold mb-4">Service Areas</h3>
+               <ul class="space-y-2 text-gray-300">
+                  <li>Souderton, PA</li>
+                  <li>Lansdale, PA</li>
+                  <li>Telford, PA</li>
+                  <li>Harleysville, PA</li>
+                  <li>And the surrounding Indian Valley area</li>
+               </ul>
+            </div>
+            <div>
+               <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+               <ul class="space-y-2">
+                  <li><a href="/" class="text-gray-300 hover:text-white">Home</a></li>
+                  <li><a href="gutter-cleaning-prices-souderton-montgomery-county-pa.html" class="text-gray-300 hover:text-white">Pricing & Booking</a></li>
+                  <li><a href="blog.html" class="text-gray-300 hover:text-white">Blog</a></li>
+                  <li><a href="about.html" class="text-gray-300 hover:text-white">About Us</a></li>
+                  <li><a href="https://formspree.io/f/mjkevvbr" class="text-gray-300 hover:text-white">Contact</a></li>
+               </ul>
+            </div>
+         </div>
+         <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+            <p class="text-gray-400">© 2024 Indian Valley Gutters. All Rights Reserved.</p>
+         </div>
+      </div>
+   </footer>
+
+   <script>
+      document.addEventListener('DOMContentLoaded', function() {
+         const mobileMenuButton = document.getElementById('mobile-menu-button');
+         const mobileMenu = document.getElementById('mobile-menu');
+
+         mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+         });
+
+         // --- Firebase Initialization ---
+         const firebaseConfig = {
+            apiKey: "AIzaSyA84MPC1jnfsboWKPahpFyJ_1o35gDFPmw",
+            authDomain: "indian-valley-gutters.firebaseapp.com",
+            projectId: "indian-valley-gutters",
+            storageBucket: "indian-valley-gutters.firebasestorage.app",
+            messagingSenderId: "581484441338",
+            appId: "1:581484441338:web:50b2225831fcf17b902343"
+         };
+         firebase.initializeApp(firebaseConfig);
+         const db = firebase.firestore();
+
+         // --- DOM Elements ---
+         const calendarGrid = document.getElementById('calendarGrid');
+         const monthYearEl = document.getElementById('monthYear');
+         const prevMonthBtn = document.getElementById('prevMonth');
+         const nextMonthBtn = document.getElementById('nextMonth');
+         const timeSlotsContainer = document.getElementById('timeSlotsContainer');
+         const timeSlotsEl = document.getElementById('timeSlots');
+         const selectedDateText = document.getElementById('selectedDateText');
+         const bookingForm = document.getElementById('bookingForm');
+         const bookButton = document.getElementById('bookButton');
+         const summaryDate = document.getElementById('summaryDate');
+         const summaryTime = document.getElementById('summaryTime');
+         const serviceTypeSelect = document.getElementById('serviceType');
+         const loadingIndicator = document.getElementById('loadingIndicator');
+         const messageContainer = document.getElementById('messageContainer');
+
+         // --- State Management ---
+         let currentDate = new Date();
+         currentDate.setDate(1); // Start with the first day of the month
+         let selectedDate = null;
+         let selectedTime = null;
+         let appointments = {}; // Cache for appointments: { 'YYYY-MM-DD': count }
+
+         // --- Constants ---
+         const APPOINTMENTS_PER_DAY = 5;
+         const BOOKED_UNTIL_DATE = new Date(new Date().getFullYear(), 8, 14); // September is month 8 (0-indexed)
+
+         // --- Main Functions ---
+         async function fetchAppointmentsForMonth(year, month) {
+            loadingIndicator.classList.remove('hidden');
+            const startDate = new Date(year, month, 1);
+            const endDate = new Date(year, month + 1, 0);
+
+            const startStr = `${year}-${String(month + 1).padStart(2, '0')}-01`;
+            const endStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(endDate.getDate()).padStart(2, '0')}`;
+
+            try {
+               const snapshot = await db.collection('appointments')
+                  .where('date', '>=', startStr)
+                  .where('date', '<=', endStr)
+                  .get();
+
+               // Reset counts for the current month
+               for (let i = 1; i <= endDate.getDate(); i++) {
+                  const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+                  appointments[dateStr] = 0;
+               }
+
+               snapshot.forEach(doc => {
+                  const date = doc.data().date;
+                  if (appointments[date] !== undefined) {
+                     appointments[date]++;
+                  }
+               });
+            } catch (error) {
+               console.error("Error fetching appointments: ", error);
+               showMessage('error', 'Could not load appointment data. Please try again later.');
+            } finally {
+               loadingIndicator.classList.add('hidden');
+               generateCalendar(year, month);
+            }
+         }
+
+         function generateCalendar(year, month) {
+            calendarGrid.innerHTML = '';
+            monthYearEl.textContent = `${new Date(year, month).toLocaleString('default', { month: 'long' })} ${year}`;
+
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const today = new Date();
+            today.setHours(0, 0, 0, 0); // Normalize today's date
+
+            for (let i = 0; i < firstDay; i++) {
+               calendarGrid.innerHTML += `<div class="other-month"></div>`;
+            }
+
+            for (let day = 1; day <= daysInMonth; day++) {
+               const dayEl = document.createElement('div');
+               const date = new Date(year, month, day);
+               date.setHours(0, 0, 0, 0); // Normalize loop date
+               const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+
+               dayEl.classList.add('calendar-day', 'rounded-lg', 'text-lg', 'font-semibold');
+               dayEl.innerHTML = `<span>${day}</span><div class="appointment-dot-container"></div>`;
+               dayEl.dataset.date = dateStr;
+
+               const appointmentCount = appointments[dateStr] || 0;
+               const dotsContainer = dayEl.querySelector('.appointment-dot-container');
+               for (let i = 0; i < appointmentCount; i++) {
+                  dotsContainer.innerHTML += `<div class="appointment-dot"></div>`;
+               }
+
+               if (date < today || date <= BOOKED_UNTIL_DATE) {
+                  dayEl.classList.add('disabled', 'fully-booked');
+                  dayEl.title = "This date is unavailable.";
+               } else if (appointmentCount >= APPOINTMENTS_PER_DAY) {
+                  dayEl.classList.add('fully-booked');
+                  dayEl.title = "This date is fully booked.";
+               } else {
+                  if (appointmentCount > 0) {
+                     dayEl.classList.add('has-appointments');
+                  }
+                  dayEl.addEventListener('click', () => handleDateClick(dateStr, dayEl));
+               }
+
+               if (selectedDate === dateStr) {
+                  dayEl.classList.add('selected');
+               }
+
+               calendarGrid.appendChild(dayEl);
+            }
+         }
+
+         function handleDateClick(dateStr, dayEl) {
+            const prevSelected = document.querySelector('.calendar-day.selected');
+            if (prevSelected) prevSelected.classList.remove('selected');
+            dayEl.classList.add('selected');
+            selectedDate = dateStr;
+            selectedTime = null; // Reset time when date changes
+
+            selectedDateText.textContent = new Date(dateStr + 'T00:00:00').toLocaleDateString('en-US', {
+               weekday: 'long',
+               year: 'numeric',
+               month: 'long',
+               day: 'numeric'
+            });
+            summaryDate.textContent = selectedDate;
+            summaryTime.textContent = 'Select a time';
+            timeSlotsContainer.classList.remove('hidden');
+            generateTimeSlots(dateStr);
+            updateBookButtonState();
+         }
+
+         async function generateTimeSlots(dateStr) {
+            timeSlotsEl.innerHTML = '';
+            const availableSlots = ["09:00 AM", "11:00 AM", "01:00 PM", "03:00 PM", "05:00 PM"];
+
+            availableSlots.forEach(time => {
+               const timeSlotEl = document.createElement('button');
+               timeSlotEl.type = 'button';
+               timeSlotEl.classList.add('time-slot', 'p-3', 'rounded-md', 'font-semibold', 'border');
+               timeSlotEl.textContent = time;
+               timeSlotEl.dataset.time = time;
+
+               timeSlotEl.addEventListener('click', () => {
+                  const prevSelected = document.querySelector('.time-slot.selected');
+                  if (prevSelected) prevSelected.classList.remove('selected');
+                  timeSlotEl.classList.add('selected');
+                  selectedTime = time;
+                  summaryTime.textContent = selectedTime;
+                  updateBookButtonState();
+               });
+               timeSlotsEl.appendChild(timeSlotEl);
+            });
+         }
+
+         function showMessage(type, message) {
+            const messageContent = document.createElement('div');
+            messageContainer.innerHTML = '';
+            messageContent.textContent = message;
+            messageContent.className = `p-4 rounded-lg text-center ${type === 'error' ? 'error-message' : 'success-message'}`;
+            messageContainer.appendChild(messageContent);
+         }
+
+         function updateBookButtonState() {
+            if (selectedDate && selectedTime) {
+               bookButton.disabled = false;
+            } else {
+               bookButton.disabled = true;
+            }
+         }
+
+         // --- Event Listeners ---
+         prevMonthBtn.addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            fetchAppointmentsForMonth(currentDate.getFullYear(), currentDate.getMonth());
+         });
+
+         nextMonthBtn.addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            fetchAppointmentsForMonth(currentDate.getFullYear(), currentDate.getMonth());
+         });
+
+         bookingForm.querySelectorAll('input, select').forEach(input => {
+            input.addEventListener('input', updateBookButtonState);
+         });
+
+         bookingForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            messageContainer.innerHTML = '';
+
+            if (!bookingForm.checkValidity()) {
+               showMessage('error', 'Please fill out all required fields.');
+               return;
+            }
+            if (!selectedDate || !selectedTime) {
+               showMessage('error', 'Please select an available date and time slot.');
+               return;
+            }
+
+            bookButton.disabled = true;
+            bookButton.textContent = 'Booking...';
+
+            const appointmentData = {
+               service: document.getElementById('serviceType').value,
+               date: selectedDate,
+               time: selectedTime,
+               name: document.getElementById('name').value,
+               email: document.getElementById('email').value,
+               phone: document.getElementById('phone').value,
+               address: document.getElementById('address').value,
+               status: 'pending_payment',
+               createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            };
+
+            try {
+               const docRef = await db.collection('appointments').add(appointmentData);
+               console.log("Pending appointment saved with ID: ", docRef.id);
+
+               const stripePaymentLink = 'https://buy.stripe.com/5kQ6oGfsF5HW4tNcGVbbG0j';
+
+               const redirectUrl = `${stripePaymentLink}?client_reference_id=${docRef.id}`;
+
+               window.location.href = redirectUrl;
+
+            } catch (error) {
+               console.error("Error creating appointment: ", error);
+               showMessage('error', 'There was an error booking your appointment. Please try again.');
+               bookButton.disabled = false;
+               bookButton.textContent = 'Proceed to Deposit';
+            }
+         });
+
+         // --- Initial Load ---
+         fetchAppointmentsForMonth(currentDate.getFullYear(), currentDate.getMonth());
+      });
+   </script>
+</body>
+
+</html>
