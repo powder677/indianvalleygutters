@@ -23,6 +23,10 @@
       body {
          font-family: 'Inter', sans-serif;
       }
+
+      .group:hover .group-hover\:block {
+         display: block;
+      }
    </style>
 </head>
 
@@ -35,7 +39,14 @@
          </a>
          <div class="hidden md:flex space-x-6 items-center">
             <a href="/" class="text-blue-600 font-semibold">Home</a>
-            <a href="gutter-cleaning-prices-souderton-montgomery-county-pa.html" class="text-gray-600 hover:text-blue-600">Pricing & Booking</a>
+            <div class="relative group">
+               <button class="text-gray-600 hover:text-blue-600">Services</button>
+               <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-md mt-2 py-2 w-48">
+                  <a href="gutter-cleaning-prices-souderton-montgomery-county-pa.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">Gutter Cleaning</a>
+                  <a href="gutter-repair.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">Gutter Repair</a>
+                  <a href="roof-cleaning.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">Roof Cleaning</a>
+               </div>
+            </div>
             <a href="blog.html" class="text-gray-600 hover:text-blue-600">Blog</a>
             <a href="about.html" class="text-gray-600 hover:text-blue-600">About Us</a>
             <a href="faq.html" class="text-gray-600 hover:text-blue-600">FAQ</a>
@@ -50,7 +61,9 @@
       </nav>
       <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
          <a href="/" class="block py-2 px-4 text-sm text-blue-600">Home</a>
-         <a href="gutter-cleaning-prices-souderton-montgomery-county-pa.html" class="block py-2 px-4 text-sm hover:bg-gray-50">Pricing & Booking</a>
+         <a href="gutter-cleaning-prices-souderton-montgomery-county-pa.html" class="block py-2 px-4 text-sm hover:bg-gray-50">Gutter Cleaning</a>
+         <a href="gutter-repair.html" class="block py-2 px-4 text-sm hover:bg-gray-50">Gutter Repair</a>
+         <a href="roof-cleaning.html" class="block py-2 px-4 text-sm hover:bg-gray-50">Roof Cleaning</a>
          <a href="blog.html" class="block py-2 px-4 text-sm hover:bg-gray-50">Blog</a>
          <a href="about.html" class="block py-2 px-4 text-sm hover:bg-gray-50">About Us</a>
          <a href="faq.html" class="block py-2 px-4 text-sm hover:bg-gray-50">FAQ</a>
@@ -79,19 +92,48 @@
 
       <section class="bg-white py-16 md:py-24">
          <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-3 gap-10 text-center">
-               <div class="bg-gray-50 p-8 rounded-lg">
-                  <h3 class="text-2xl font-bold text-gray-900 mb-3">Flat-Rate Pricing</h3>
-                  <p class="text-gray-700">No surprises. Just two simple prices: one for single-story homes, one for two-story homes. It's that easy.</p>
+            <div class="text-center max-w-3xl mx-auto mb-12">
+               <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Services</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-10">
+               <div class="bg-gray-50 p-8 rounded-lg text-center">
+                  <h3 class="text-2xl font-bold text-gray-900 mb-3">Gutter Cleaning</h3>
+                  <p class="text-gray-700 mb-4">Complete debris removal and downspout flushing to keep your system flowing freely.</p>
+                  <a href="gutter-cleaning-prices-souderton-montgomery-county-pa.html" class="font-bold text-blue-600 hover:text-blue-800">Learn More →</a>
                </div>
-               <div class="bg-gray-50 p-8 rounded-lg">
-                  <h3 class="text-2xl font-bold text-gray-900 mb-3">Instant Online Booking</h3>
-                  <p class="text-gray-700">Pick your date and time with our live calendar. No waiting for callbacks or estimates.</p>
+               <div class="bg-gray-50 p-8 rounded-lg text-center">
+                  <h3 class="text-2xl font-bold text-gray-900 mb-3">Gutter Repair</h3>
+                  <p class="text-gray-700 mb-4">From leaks and loose sections to re-pitching and sealing, we handle all types of gutter repairs.</p>
+                  <a href="gutter-repair.html" class="font-bold text-blue-600 hover:text-blue-800">Learn More →</a>
                </div>
-               <div class="bg-gray-50 p-8 rounded-lg">
-                  <h3 class="text-2xl font-bold text-gray-900 mb-3">Satisfaction Guaranteed</h3>
-                  <p class="text-gray-700">We stand by our work. If you're not 100% happy, we'll come back and make it right, free of charge.</p>
+               <div class="bg-gray-50 p-8 rounded-lg text-center">
+                  <h3 class="text-2xl font-bold text-gray-900 mb-3">Roof Cleaning</h3>
+                  <p class="text-gray-700 mb-4">Our safe, soft-wash technique removes algae and moss, extending the life of your roof.</p>
+                  <a href="roof-cleaning.html" class="font-bold text-blue-600 hover:text-blue-800">Learn More →</a>
                </div>
+            </div>
+         </div>
+      </section>
+
+      <section class="py-16 md:py-24">
+         <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+               <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Serving the Indian Valley and Surrounding Areas</h2>
+               <p class="text-lg text-gray-700">We are proud to be a locally owned and operated business providing reliable gutter services to our neighbors.</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+               <a href="souderton-gutter-cleaning.html" class="block p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                  <h3 class="text-xl font-bold text-gray-900">Souderton</h3>
+               </a>
+               <a href="lansdale-gutter-cleaning.html" class="block p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                  <h3 class="text-xl font-bold text-gray-900">Lansdale</h3>
+               </a>
+               <a href="telford-gutter-cleaning.html" class="block p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                  <h3 class="text-xl font-bold text-gray-900">Telford</h3>
+               </a>
+               <a href="harleysville-gutter-cleaning.html" class="block p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                  <h3 class="text-xl font-bold text-gray-900">Harleysville</h3>
+               </a>
             </div>
          </div>
       </section>
