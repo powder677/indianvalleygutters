@@ -4,12 +4,62 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Gutter Cleaning in Souderton, PA | Indian Valley Gutters</title>
-   <meta name="description" content="Professional gutter cleaning in Souderton, PA. Serving historic homes and new developments. Flat-rate $199/$269. Fully insured local experts. Book online today.">
-   <meta property="og:title" content="Gutter Cleaning in Harleysville, PA | Indian Valley Gutters" />
-   <meta property="og:description" content="Professional gutter cleaning in Harleysville, PA. Local experts for modern rooflines. Flat-rate $199/$269. Fully insured. Book online today." />
-   <meta property="twitter:card" content="summary" />
+   <title>Professional Gutter Cleaning in Souderton, PA | Indian Valley Gutters</title>
+   <meta name="description" content="Expert gutter cleaning services in Souderton, Pennsylvania. Licensed, insured, and locally owned. Flat-rate pricing starting at $199. Serving downtown Souderton, Woxall, and surrounding areas with professional gutter maintenance.">
+   <meta name="keywords" content="gutter cleaning Souderton PA, Souderton gutter service, professional gutter cleaning Souderton, Indian Valley area gutters, Woxall gutter cleaning, Montgomery County gutter service">
 
+   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+   <link rel="shortcut icon" href="/favicon.ico">
+
+   <link rel="canonical" href="https://www.indianvalleygutters.com/souderton-gutter-cleaning.html">
+
+   <!-- Schema Markup for Local Service -->
+   <script type="application/ld+json">
+      {
+         "@context": "https://schema.org",
+         "@type": "Service",
+         "name": "Gutter Cleaning Services in Souderton, PA",
+         "description": "Professional gutter cleaning and maintenance services for Souderton, Pennsylvania homeowners",
+         "provider": {
+            "@type": "LocalBusiness",
+            "name": "Indian Valley Gutters",
+            "address": {
+               "@type": "PostalAddress",
+               "streetAddress": "203 East Broad St",
+               "addressLocality": "Souderton",
+               "addressRegion": "PA",
+               "postalCode": "18964",
+               "addressCountry": "US"
+            },
+            "telephone": "+1-XXX-XXX-XXXX",
+            "url": "https://www.indianvalleygutters.com"
+         },
+         "areaServed": {
+            "@type": "Place",
+            "name": "Souderton, Pennsylvania"
+         },
+         "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Souderton Gutter Services",
+            "itemListElement": [{
+               "@type": "Offer",
+               "itemOffered": {
+                  "@type": "Service",
+                  "name": "Residential Gutter Cleaning",
+                  "description": "Complete gutter cleaning and debris removal for Souderton homes"
+               },
+               "priceSpecification": {
+                  "@type": "PriceSpecification",
+                  "price": "199",
+                  "priceCurrency": "USD",
+                  "description": "Starting price for 1-story homes"
+               }
+            }]
+         }
+      }
+   </script>
 
    <script src="https://cdn.tailwindcss.com"></script>
    <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,25 +70,8 @@
          font-family: 'Inter', sans-serif;
       }
 
-      .prose h2 {
-         @apply text-3xl font-bold text-gray-900 mb-4 mt-12;
-      }
-
-      .prose h3 {
-         @apply text-xl font-bold text-gray-800 mb-3 mt-8;
-      }
-
-      .prose p,
-      .prose ul {
-         @apply text-gray-700 leading-relaxed;
-      }
-
-      .prose a {
-         @apply text-blue-600 hover: underline;
-      }
-
-      .prose ul {
-         @apply list-disc pl-6 space-y-2;
+      .group:hover .group-hover\:block {
+         display: block;
       }
    </style>
 </head>
@@ -47,14 +80,22 @@
 
    <header class="bg-white shadow-sm sticky top-0 z-50">
       <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-         <a href="index.html" class="text-2xl font-bold text-gray-900">
+         <a href="/" class="text-2xl font-bold text-gray-900">
             Indian Valley <span class="text-blue-600">Gutters</span>
          </a>
          <div class="hidden md:flex space-x-6 items-center">
-            <a href="index.html" class="text-gray-600 hover:text-blue-600">Home</a>
-            <a href="pricing.html" class="text-gray-600 hover:text-blue-600">Pricing & Booking</a>
-            <a href="blog.html" class="text-blue-600 font-semibold">Blog</a>
+            <a href="/" class="text-gray-600 hover:text-blue-600">Home</a>
+            <div class="relative group">
+               <button class="text-gray-600 hover:text-blue-600">Services</button>
+               <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-md mt-2 py-2 w-48">
+                  <a href="gutter-cleaning-prices-souderton-montgomery-county-pa.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">Gutter Cleaning</a>
+                  <a href="gutter-repair.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">Gutter Repair</a>
+                  <a href="roof-cleaning.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">Roof Cleaning</a>
+               </div>
+            </div>
+            <a href="blog.html" class="text-gray-600 hover:text-blue-600">Blog</a>
             <a href="about.html" class="text-gray-600 hover:text-blue-600">About Us</a>
+            <a href="faq.html" class="text-gray-600 hover:text-blue-600">FAQ</a>
          </div>
          <div class="md:hidden">
             <button id="mobile-menu-button" class="text-gray-600 hover:text-blue-600 focus:outline-none">
@@ -65,51 +106,215 @@
          </div>
       </nav>
       <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
-         <a href="index.html" class="block py-2 px-4 text-sm hover:bg-gray-50">Home</a>
-         <a href="pricing.html" class="block py-2 px-4 text-sm hover:bg-gray-50">Pricing & Booking</a>
-         <a href="blog.html" class="block py-2 px-4 text-sm text-blue-600">Blog</a>
+         <a href="/" class="block py-2 px-4 text-sm hover:bg-gray-50">Home</a>
+         <a href="gutter-cleaning-prices-souderton-montgomery-county-pa.html" class="block py-2 px-4 text-sm hover:bg-gray-50">Gutter Cleaning</a>
+         <a href="gutter-repair.html" class="block py-2 px-4 text-sm hover:bg-gray-50">Gutter Repair</a>
+         <a href="roof-cleaning.html" class="block py-2 px-4 text-sm hover:bg-gray-50">Roof Cleaning</a>
+         <a href="blog.html" class="block py-2 px-4 text-sm hover:bg-gray-50">Blog</a>
          <a href="about.html" class="block py-2 px-4 text-sm hover:bg-gray-50">About Us</a>
+         <a href="faq.html" class="block py-2 px-4 text-sm hover:bg-gray-50">FAQ</a>
       </div>
    </header>
 
-   <main class="py-16 md:py-24">
-      <div class="container mx-auto px-6">
-         <article class="prose prose-lg max-w-4xl mx-auto">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">Gutter Cleaning in Harleysville, Pennsylvania</h1>
+   <main>
+      <!-- Hero Section -->
+      <section class="bg-blue-700 text-white text-center py-16 md:py-24">
+         <div class="container mx-auto px-6">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Professional Gutter Cleaning in Souderton, Pennsylvania</h1>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8">Your hometown gutter cleaning specialists serving Souderton's historic neighborhoods and growing communities. Flat-rate pricing, licensed professionals, and 100% satisfaction guaranteed.</p>
+            <a href="gutter-cleaning-prices-souderton-montgomery-county-pa.html" class="bg-green-500 text-white font-bold text-xl py-4 px-10 rounded-lg shadow-lg hover:bg-green-600 transition transform hover:scale-105">
+               Get Instant Pricing - Starting at $199
+            </a>
+         </div>
+      </section>
 
-            <h2>Understanding Harleysville's Unique Gutter Challenges</h2>
-            <p>Harleysville is characterized by its newer developments, which often feature complex rooflines and multiple gutter systems. While modern gutter guards are more common in this area, they still require regular maintenance to function correctly. From properties near Harleysville Community Park to the expanding residential sections around Route 63 and Moyer Road, the higher percentage of 2-story colonials and split-levels with multi-level rooflines in Harleysville means that professional equipment is often necessary for safe and effective gutter cleaning.</p>
-            <p>As a growing area with new construction, Harleysville homeowners need a gutter cleaning service that understands the specific challenges of modern homes. From navigating complex roof access to ensuring that all levels of a multi-system setup are clear, our team has the experience and equipment to do the job right.</p>
+      <!-- Local Area Focus -->
+      <section class="py-16 md:py-20">
+         <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+               <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 text-center">Understanding Souderton's Unique Gutter Challenges</h2>
+               <div class="text-lg text-gray-700 space-y-6">
+                  <p>Souderton's rich history as a railroad town has created a unique blend of architectural styles, from charming Victorian homes near downtown to modern developments in areas like Woxall and along Harleysville Pike. This diversity means our team encounters everything from original 1900s gutters requiring delicate handling to contemporary seamless systems on newer construction.</p>
 
-            <div class="bg-gray-100 p-6 rounded-lg my-8">
-               <p class="italic text-gray-800">"Our colonial has three different gutter levels and they handled it perfectly. Very impressed with their professionalism and attention to detail. The complex roofline didn't slow them down at all." - Jennifer K., Route 63 area</p>
+                  <p>The mature tree canopy throughout established neighborhoods like those around Memorial Park and the Souderton Area School District creates beautiful shade but also presents significant gutter maintenance challenges. Large oak, maple, and pine trees drop substantial amounts of leaves, seeds, and debris that can quickly overwhelm gutter systems, especially during Souderton's wet spring seasons and heavy autumn leaf drops.</p>
+
+                  <p>Many of Souderton's historic homes feature complex rooflines with multiple levels, dormers, and architectural details that require professional expertise to access safely. From the tree-lined streets near Chestnut Street to the expanding residential areas toward Telford, our team understands the specific challenges that local homeowners face with their gutter systems.</p>
+
+                  <blockquote class="bg-blue-50 border-l-4 border-blue-500 p-6 my-8 italic text-gray-700">
+                     "Our 1920s colonial near downtown has original gutters with some tricky access points. Indian Valley Gutters handled everything professionally and even gave us advice on maintaining the historic character while keeping everything functional. Excellent local service!" - Sarah M., Chestnut Street area
+                  </blockquote>
+               </div>
             </div>
+         </div>
+      </section>
 
-            <h2>Professional Gutter Cleaning Service in Harleysville</h2>
-            <p>Our flat-rate pricing is perfect for Harleysville's homeowners. We charge <strong>$199 for a 1-story home</strong> and <strong>$269 for a 2-story home</strong>, with no hidden fees. Our comprehensive service includes:</p>
-            <ul>
-               <li>A full cleanout of all gutter systems, including those on complex rooflines</li>
-               <li>Thorough flushing of all downspouts</li>
-               <li>Removal and disposal of all debris</li>
-               <li>A complete cleanup of the work area</li>
-            </ul>
-            <p>We are fully insured, and our team is trained to handle the complexities of modern homes, ensuring a safe and effective cleaning every time.</p>
+      <!-- Service Details -->
+      <section class="bg-white py-16 md:py-20">
+         <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+               <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">Professional Gutter Cleaning Service in Souderton</h2>
 
-            <h2>Recommended Cleaning Schedule for Harleysville Homes</h2>
-            <p>For homes in Harleysville, we recommend a bi-annual cleaning schedule to keep your gutters in optimal condition. A spring cleaning will prepare your system for heavy seasonal rains, while a fall cleaning will clear out leaves and other debris before winter arrives. This schedule is the best way to protect your home from the water damage that can result from clogged gutters.</p>
+               <div class="bg-green-50 border border-green-200 rounded-lg p-8 mb-12">
+                  <h3 class="text-2xl font-bold text-gray-900 mb-4">Transparent Flat-Rate Pricing</h3>
+                  <div class="grid md:grid-cols-2 gap-8">
+                     <div class="text-center">
+                        <div class="text-4xl font-bold text-green-600 mb-2">$199</div>
+                        <div class="text-lg font-semibold text-gray-800">1-Story Homes</div>
+                        <div class="text-gray-600">Complete gutter cleaning service</div>
+                     </div>
+                     <div class="text-center">
+                        <div class="text-4xl font-bold text-green-600 mb-2">$269</div>
+                        <div class="text-lg font-semibold text-gray-800">2-Story Homes</div>
+                        <div class="text-gray-600">All levels and complex rooflines</div>
+                     </div>
+                  </div>
+                  <p class="text-center text-gray-700 mt-6 font-semibold">No hidden fees. Price includes everything listed below.</p>
+               </div>
 
-            <h2>Schedule Your Harleysville Gutter Cleaning Today</h2>
-            <p>Ensure your modern home is protected with our professional gutter cleaning service. Click the button below to book your appointment online, or <a href="about.html#contact">contact us</a> for more information. We look forward to serving you in Harleysville.</p>
-            <div class="text-center mt-8">
-               <a href="pricing.html" class="bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition">Book Your Gutter Cleaning Now</a>
+               <h3 class="text-2xl font-bold text-gray-900 mb-6">Our Comprehensive Souderton Gutter Cleaning Process</h3>
+               <div class="grid md:grid-cols-2 gap-8 mb-12">
+                  <div>
+                     <ul class="space-y-4 text-gray-700">
+                        <li class="flex items-start">
+                           <span class="text-green-600 font-bold mr-3">✓</span>
+                           <span>Complete removal of all leaves, debris, and sediment from gutters and downspouts</span>
+                        </li>
+                        <li class="flex items-start">
+                           <span class="text-green-600 font-bold mr-3">✓</span>
+                           <span>Thorough flushing of entire gutter system to ensure proper water flow</span>
+                        </li>
+                        <li class="flex items-start">
+                           <span class="text-green-600 font-bold mr-3">✓</span>
+                           <span>Professional inspection of gutter condition and mounting hardware</span>
+                        </li>
+                        <li class="flex items-start">
+                           <span class="text-green-600 font-bold mr-3">✓</span>
+                           <span>Safe handling of historic and architectural gutter systems</span>
+                        </li>
+                     </ul>
+                  </div>
+                  <div>
+                     <ul class="space-y-4 text-gray-700">
+                        <li class="flex items-start">
+                           <span class="text-green-600 font-bold mr-3">✓</span>
+                           <span>Complete cleanup and removal of all debris from your property</span>
+                        </li>
+                        <li class="flex items-start">
+                           <span class="text-green-600 font-bold mr-3">✓</span>
+                           <span>Before and after photos documenting our thorough work</span>
+                        </li>
+                        <li class="flex items-start">
+                           <span class="text-green-600 font-bold mr-3">✓</span>
+                           <span>Detailed report of any issues found during cleaning</span>
+                        </li>
+                        <li class="flex items-start">
+                           <span class="text-green-600 font-bold mr-3">✓</span>
+                           <span>Recommendations for maintaining your specific gutter system</span>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+
+               <div class="bg-blue-50 rounded-lg p-6">
+                  <p class="text-gray-800 text-center"><strong>Fully Licensed & Insured:</strong> Our team is trained to handle the complexities of Souderton's diverse architectural styles, from historic homes to modern construction, ensuring safe and effective cleaning every time.</p>
+               </div>
             </div>
-         </article>
-      </div>
+         </div>
+      </section>
+
+      <!-- Seasonal Recommendations -->
+      <section class="py-16 md:py-20 bg-gray-100">
+         <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+               <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">Recommended Cleaning Schedule for Souderton Homes</h2>
+
+               <div class="grid md:grid-cols-2 gap-8 mb-8">
+                  <div class="bg-white rounded-lg p-6 shadow-md">
+                     <h3 class="text-xl font-bold text-gray-900 mb-4">🌸 Spring Cleaning (April-May)</h3>
+                     <p class="text-gray-700 mb-4">Souderton's spring season brings heavy rains and the final debris from winter storms. A spring cleaning prepares your gutters for the intense rainfall that Montgomery County experiences during late spring and early summer.</p>
+                     <p class="text-gray-700"><strong>Benefits:</strong> Prevents water damage from spring storms, removes winter debris, prepares system for heavy seasonal rains.</p>
+                  </div>
+
+                  <div class="bg-white rounded-lg p-6 shadow-md">
+                     <h3 class="text-xl font-bold text-gray-900 mb-4">🍂 Fall Cleaning (October-November)</h3>
+                     <p class="text-gray-700 mb-4">With Souderton's mature tree canopy, fall brings massive amounts of leaves that can completely block gutter systems. This is absolutely critical timing for most local homes.</p>
+                     <p class="text-gray-700"><strong>Benefits:</strong> Prevents ice dams, clears heavy leaf accumulation, prepares for winter weather conditions.</p>
+                  </div>
+               </div>
+
+               <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
+                  <h3 class="text-lg font-bold text-gray-900 mb-3">Special Considerations for Souderton Properties:</h3>
+                  <ul class="text-gray-700 space-y-2">
+                     <li><strong>Historic Homes:</strong> May require more frequent inspection due to older gutter systems and mature surrounding trees</li>
+                     <li><strong>Properties Near Parks:</strong> Homes close to Memorial Park or wooded areas may need additional cleanings during heavy leaf seasons</li>
+                     <li><strong>New Construction:</strong> Even newer homes benefit from bi-annual service to maintain warranty coverage and prevent issues</li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <!-- Why Choose Us -->
+      <section class="py-16 md:py-20 bg-white">
+         <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+               <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">Why Souderton Homeowners Choose Indian Valley Gutters</h2>
+
+               <div class="grid md:grid-cols-3 gap-8">
+                  <div class="text-center">
+                     <div class="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">🏠</span>
+                     </div>
+                     <h3 class="text-xl font-bold text-gray-900 mb-3">Local Expertise</h3>
+                     <p class="text-gray-700">Born and raised in the Indian Valley area, we understand Souderton's unique challenges from historic home preservation to modern gutter system maintenance.</p>
+                  </div>
+
+                  <div class="text-center">
+                     <div class="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">💰</span>
+                     </div>
+                     <h3 class="text-xl font-bold text-gray-900 mb-3">Honest Pricing</h3>
+                     <p class="text-gray-700">No surprise charges or hidden fees. Our flat-rate pricing means you know exactly what you'll pay before we start, with no pressure for unnecessary add-ons.</p>
+                  </div>
+
+                  <div class="text-center">
+                     <div class="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">✅</span>
+                     </div>
+                     <h3 class="text-xl font-bold text-gray-900 mb-3">Satisfaction Guaranteed</h3>
+                     <p class="text-gray-700">We stand behind our work with a 100% satisfaction guarantee. If you're not completely happy with our service, we'll make it right.</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <!-- Call to Action -->
+      <section class="bg-blue-700 text-white py-16 md:py-20">
+         <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto text-center">
+               <h2 class="text-3xl md:text-4xl font-bold mb-6">Schedule Your Souderton Gutter Cleaning Today</h2>
+               <p class="text-lg md:text-xl mb-8">Protect your Souderton home with professional gutter cleaning services. From historic downtown properties to newer developments, we provide the expert care your gutters need.</p>
+
+               <div class="space-y-4 md:space-y-0 md:space-x-6 md:flex md:justify-center">
+                  <a href="gutter-cleaning-prices-souderton-montgomery-county-pa.html" class="block md:inline-block bg-green-500 text-white font-bold text-xl py-4 px-10 rounded-lg shadow-lg hover:bg-green-600 transition transform hover:scale-105">
+                     Book Online - Starting at $199
+                  </a>
+                  <a href="tel:+1-XXX-XXX-XXXX" class="block md:inline-block bg-white text-blue-700 font-bold text-xl py-4 px-10 rounded-lg shadow-lg hover:bg-gray-100 transition">
+                     Call Now for Free Quote
+                  </a>
+               </div>
+
+               <p class="text-sm mt-6 opacity-90">Serving Souderton, Woxall, and surrounding Montgomery County areas • Licensed & Insured • Same-day quotes available</p>
+            </div>
+         </div>
+      </section>
+
    </main>
 
    <footer class="bg-gray-900 text-white">
       <div class="container mx-auto px-6 py-12">
-         <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
+         <div class="grid md:grid-cols-4 gap-8 text-center md:text-left">
             <div>
                <h3 class="text-xl font-bold mb-4">Indian Valley <span class="text-blue-400">Gutters</span></h3>
                <p class="text-gray-300 mb-4">
@@ -117,33 +322,46 @@
                   Souderton, PA 18964
                </p>
                <p class="text-gray-300">Licensed & Insured</p>
+               <p class="text-gray-300 mt-2">Proudly Serving Souderton Since [Year]</p>
             </div>
             <div>
-               <h3 class="text-lg font-bold mb-4">Service Areas</h3>
+               <h3 class="text-lg font-bold mb-4">Our Services</h3>
                <ul class="space-y-2 text-gray-300">
-                  <li>Souderton, PA</li>
-                  <li>Lansdale, PA</li>
-                  <li>Telford, PA</li>
-                  <li>Harleysville, PA</li>
-                  <li>And the surrounding Indian Valley area</li>
+                  <li><a href="gutter-cleaning-prices-souderton-montgomery-county-pa.html" class="hover:text-white">Gutter Cleaning</a></li>
+                  <li><a href="gutter-repair.html" class="hover:text-white">Gutter Repair</a></li>
+                  <li><a href="roof-cleaning.html" class="hover:text-white">Roof Cleaning</a></li>
+                  <li>Downspout Cleaning</li>
+                  <li>Gutter Inspections</li>
                </ul>
             </div>
             <div>
-               <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+               <h3 class="text-lg font-bold mb-4">Souderton Areas</h3>
+               <ul class="space-y-2 text-gray-300">
+                  <li>Downtown Souderton</li>
+                  <li>Woxall</li>
+                  <li>Harleysville Pike</li>
+                  <li>Chestnut Street Area</li>
+                  <li>Memorial Park Area</li>
+                  <li>School District Zone</li>
+               </ul>
+            </div>
+            <div>
+               <h3 class="text-lg font-bold mb-4">Service Areas</h3>
                <ul class="space-y-2">
-                  <li><a href="index.html" class="text-gray-300 hover:text-white">Home</a></li>
-                  <li><a href="pricing.html" class="text-gray-300 hover:text-white">Pricing & Booking</a></li>
-                  <li><a href="blog.html" class="text-gray-300 hover:text-white">Blog</a></li>
-                  <li><a href="about.html" class="text-gray-300 hover:text-white">About Us</a></li>
-                  <li><a href="https://formspree.io/f/mjkevvbr" class="text-gray-300 hover:text-white">Contact</a></li>
+                  <li><a href="/" class="text-gray-300 hover:text-white">All Montgomery County</a></li>
+                  <li><a href="lansdale-gutter-cleaning.html" class="text-gray-300 hover:text-white">Lansdale</a></li>
+                  <li><a href="telford-gutter-cleaning.html" class="text-gray-300 hover:text-white">Telford</a></li>
+                  <li><a href="harleysville-gutter-cleaning.html" class="text-gray-300 hover:text-white">Harleysville</a></li>
+                  <li><a href="about.html" class="text-gray-300 hover:text-white">About Our Company</a></li>
                </ul>
             </div>
          </div>
          <div class="border-t border-gray-800 mt-8 pt-8 text-center">
-            <p class="text-gray-400">© 2024 Indian Valley Gutters. All Rights Reserved.</p>
+            <p class="text-gray-400">© 2024 Indian Valley Gutters. Professional gutter cleaning services for Souderton, Pennsylvania and Montgomery County.</p>
          </div>
       </div>
    </footer>
+
    <script>
       const mobileMenuButton = document.getElementById('mobile-menu-button');
       const mobileMenu = document.getElementById('mobile-menu');
