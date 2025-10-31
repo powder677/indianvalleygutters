@@ -133,10 +133,45 @@
          right: 0;
          height: 4px;
       }
+
+      /* Modal animation */
+      @keyframes slideIn {
+         from {
+            opacity: 0;
+            transform: scale(0.95);
+         }
+         to {
+            opacity: 1;
+            transform: scale(1);
+         }
+      }
+
+      .modal-content {
+         animation: slideIn 0.3s ease-out;
+      }
    </style>
 </head>
 
 <body class="bg-gray-50 text-gray-800">
+
+   <!-- Sale Modal -->
+   <div id="sale-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+      <div class="bg-white rounded-lg shadow-2xl p-8 max-w-md w-full mx-4 relative modal-content">
+         <button id="close-modal-button" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+         </button>
+         
+         <h2 class="text-3xl font-extrabold text-blue-600 mb-4">November Special!</h2>
+         <p class="text-5xl font-extrabold text-gray-900 mb-4">$50 OFF</p>
+         <p class="text-lg text-gray-700 mb-6">Get $50 off any 2-story gutter cleaning service booked this November. Don't wait for winter!</p>
+         
+         <a href="gutter-cleaning-prices-souderton-montgomery-county-pa.html" class="block w-full text-center bg-green-500 text-white font-bold text-xl py-4 px-10 rounded-lg shadow-lg hover:bg-green-600 transition">
+            Book Now & Save $50
+         </a>
+      </div>
+   </div>
 
    <header class="bg-white shadow-sm sticky top-0 z-50">
       <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -366,13 +401,44 @@
    </footer>
 
    <script>
-      const mobileMenuButton = document.getElementById('mobile-menu-button');
-      const mobileMenu = document.getElementById('mobile-menu');
-
-      mobileMenuButton.addEventListener('click', () => {
-         mobileMenu.classList.toggle('hidden');
+      document.addEventListener('DOMContentLoaded', function() {
+         // --- Sale Modal Logic ---
+         const saleModal = document.getElementById('sale-modal');
+         const closeModalButton = document.getElementById('close-modal-button');
+         
+         // Function to show the modal
+         function showModal() {
+            saleModal.classList.remove('hidden');
+         }
+         
+         // Function to hide the modal
+         function hideModal() {
+            saleModal.classList.add('hidden');
+         }
+         
+         // Show the modal 2 seconds after the page loads
+         setTimeout(showModal, 2000);
+         
+         // Hide the modal when the close button is clicked
+         closeModalButton.addEventListener('click', hideModal);
+         
+         // Also hide if they click outside the modal content
+         saleModal.addEventListener('click', function(e) {
+            if (e.target === saleModal) {
+               hideModal();
+            }
+         });
+         
+         // --- Mobile Menu Toggle ---
+         const mobileMenuButton = document.getElementById('mobile-menu-button');
+         const mobileMenu = document.getElementById('mobile-menu');
+         
+         mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+         });
       });
    </script>
+
 </body>
 
 </html>
