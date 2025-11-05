@@ -29,9 +29,47 @@
       body {
          font-family: 'Inter', sans-serif;
       }
-
-      .group:hover .group-hover\:block {
+      .dropdown-container {
+         position: relative;
+      }
+      .dropdown-menu {
+         position: absolute;
+         top: 100%;
+         left: 0;
+         background-color: white;
+         box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+         border-radius: 0.375rem;
+         padding: 0.5rem 0;
+         width: 12rem;
+         opacity: 0;
+         visibility: hidden;
+         transform: translateY(-10px);
+         transition: all 0.2s ease-in-out;
+         z-index: 50;
+      }
+      .dropdown-container:hover .dropdown-menu {
+         opacity: 1;
+         visibility: visible;
+         transform: translateY(0);
+      }
+      .dropdown-item {
          display: block;
+         padding: 0.5rem 1rem;
+         color: #374151;
+         text-decoration: none;
+         transition: background-color 0.2s ease-in-out;
+      }
+      .dropdown-item:hover {
+         background-color: #eff6ff;
+         color: #2563eb;
+      }
+      .dropdown-container::after {
+         content: '';
+         position: absolute;
+         top: 100%;
+         left: 0;
+         right: 0;
+         height: 4px;
       }
    </style>
 </head>
@@ -45,15 +83,22 @@
          </a>
          <div class="hidden md:flex space-x-6 items-center">
             <a href="/" class="text-gray-600 hover:text-blue-600">Home</a>
-            <div class="relative group">
-               <button class="text-gray-600 hover:text-blue-600">Services</button>
-               <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-md mt-2 py-2 w-48">
-                  <a href="gutter-cleaning-prices-souderton-montgomery-county-pa.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">Gutter Cleaning</a>
-                  <a href="gutter-repair.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">Gutter Repair</a>
+            <div class="dropdown-container">
+               <button class="text-gray-600 hover:text-blue-600 py-2">
+                  Services
+                  <svg class="w-4 h-4 inline-block ml-1 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+               </button>
+               <div class="dropdown-menu">
+                  <a href="gutter-cleaning-prices-souderton-montgomery-county-pa.html" class="dropdown-item">Gutter Cleaning</a>
+                  <a href="gutter-repair.html" class="dropdown-item">Gutter Repair</a>
+                  <a href="gutter-guard-installation.html" class="dropdown-item">Gutter Guards</a>
                </div>
             </div>
             <a href="blog.html" class="text-blue-600 font-semibold">Blog</a>
             <a href="about.html" class="text-gray-600 hover:text-blue-600">About Us</a>
+            <a href="faq.html" class="text-gray-600 hover:text-blue-600">FAQ</a>
          </div>
          <div class="md:hidden">
             <button id="mobile-menu-button" class="text-gray-600 hover:text-blue-600 focus:outline-none">
@@ -67,8 +112,10 @@
          <a href="/" class="block py-2 px-4 text-sm hover:bg-gray-50">Home</a>
          <a href="gutter-cleaning-prices-souderton-montgomery-county-pa.html" class="block py-2 px-4 text-sm hover:bg-gray-50">Gutter Cleaning</a>
          <a href="gutter-repair.html" class="block py-2 px-4 text-sm hover:bg-gray-50">Gutter Repair</a>
+         <a href="gutter-guard-installation.html" class="block py-2 px-4 text-sm hover:bg-gray-50">Gutter Guards</a>
          <a href="blog.html" class="block py-2 px-4 text-sm text-blue-600">Blog</a>
          <a href="about.html" class="block py-2 px-4 text-sm hover:bg-gray-50">About Us</a>
+         <a href="faq.html" class="block py-2 px-4 text-sm hover:bg-gray-50">FAQ</a>
       </div>
    </header>
 
@@ -87,6 +134,39 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+
+               <!-- NEW BLOG POST 1 -->
+               <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col">
+                  <div class="p-6 flex-grow">
+                     <h2 class="text-2xl font-bold text-gray-900 mb-3">Do Gutter Guards Really Work? A Montgomery County Guide</h2>
+                     <p class="text-gray-600 mb-4">Are gutter guards worth the investment for PA homes? Learn the truth about effectiveness, costs, and whether they work in our climate.</p>
+                  </div>
+                  <div class="p-6 bg-gray-50">
+                     <a href="do-gutter-guards-work-montgomery-county.html" class="font-bold text-blue-600 hover:text-blue-800">Read More →</a>
+                  </div>
+               </div>
+               
+               <!-- NEW BLOG POST 2 -->
+               <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col">
+                  <div class="p-6 flex-grow">
+                     <h2 class="text-2xl font-bold text-gray-900 mb-3">The Hidden Costs of Not Installing Gutter Guards in PA</h2>
+                     <p class="text-gray-600 mb-4">Clogged gutters cost PA homeowners thousands. Learn the hidden costs of skipping gutter guards and how Montgomery County weather compounds the problem.</p>
+                  </div>
+                  <div class="p-6 bg-gray-50">
+                     <a href="hidden-costs-of-no-gutter-guards-pa.html" class="font-bold text-blue-600 hover:text-blue-800">Read More →</a>
+                  </div>
+               </div>
+
+               <!-- NEW BLOG POST 3 -->
+               <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col">
+                  <div class="p-6 flex-grow">
+                     <h2 class="text-2xl font-bold text-gray-900 mb-3">Atlas vs. LeafFilter, Gutter Helmet & Other Brands</h2>
+                     <p class="text-gray-600 mb-4">Comparing gutter guard brands? See how Atlas stacks up against LeafFilter, Gutter Helmet, and big-box options for Montgomery County homes.</p>
+                  </div>
+                  <div class="p-6 bg-gray-50">
+                     <a href="atlas-vs-leaffilter-gutter-helmet-comparison-pa.html" class="font-bold text-blue-600 hover:text-blue-800">Read More →</a>
+                  </div>
+               </div>
 
                <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col">
                   <div class="p-6 flex-grow">
@@ -209,7 +289,7 @@
 
                <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col">
                   <div class="p-6 flex-grow">
-                     <h2 class="text-2xl font-bold text-gray-900 mb-3">How Often Should You Clean Gutters in Pennsylvania?</h2>
+                     <h2 classimg class="text-2xl font-bold text-gray-900 mb-3">How Often Should You Clean Gutters in Pennsylvania?</h2>
                      <p class="text-gray-600 mb-4">Find out how often to clean your gutters in Pennsylvania's climate. Protect your home from clogs and damage with regular gutter maintenance from pros.</p>
                   </div>
                   <div class="p-6 bg-gray-50">
@@ -234,7 +314,7 @@
 
    <footer class="bg-gray-900 text-white">
       <div class="container mx-auto px-6 py-12">
-         <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
+         <div class="grid md:grid-cols-4 gap-8 text-center md:text-left">
             <div>
                <h3 class="text-xl font-bold mb-4">Indian Valley <span class="text-blue-400">Gutters</span></h3>
                <p class="text-gray-300 mb-4">
@@ -242,20 +322,35 @@
                   Souderton, PA 18964
                </p>
                <p class="text-gray-300">Licensed & Insured</p>
+               <p class="text-gray-300 mt-2">Serving Montgomery County</p>
             </div>
             <div>
-               <h3 class="text-lg font-bold mb-4">Our Services</h3>
+               <h3 classImgs="text-lg font-bold mb-4">Our Services</h3>
                <ul class="space-y-2 text-gray-300">
                   <li><a href="gutter-cleaning-prices-souderton-montgomery-county-pa.html" class="hover:text-white">Gutter Cleaning</a></li>
                   <li><a href="gutter-repair.html" class="hover:text-white">Gutter Repair</a></li>
+                  <li><a href="gutter-guard-installation.html" class="hover:text-white">Gutter Guard Installation</a></li>
+               </ul>
+            </div>
+            <div>
+               <h3 class="text-lg font-bold mb-4">Service Areas</h3>
+               <ul class="space-y-2 text-gray-300">
+                  <li>Souderton, PA</li>
+                  <li>Lansdale, PA</li>
+                  <li>Telford, PA</li>
+                  <li>Harleysville, PA</li>
+                  <li>All of Montgomery County</li>
                </ul>
             </div>
             <div>
                <h3 class="text-lg font-bold mb-4">Quick Links</h3>
-               <ul class="space-y-2">
+               <ul classIs="space-y-2">
                   <li><a href="/" class="text-gray-300 hover:text-white">Home</a></li>
+                  <li><a href="gutter-guard-installation.html" class="text-gray-300 hover:text-white">Gutter Guards</a></li>
+                  <li><a href="gutter-cleaning-prices-souderton-montgomery-county-pa.html" class="text-gray-300 hover:text-white">Pricing & Booking</a></li>
                   <li><a href="blog.html" class="text-gray-300 hover:text-white">Blog</a></li>
                   <li><a href="about.html" class="text-gray-300 hover:text-white">About Us</a></li>
+                  <li><a href="faq.html" class="text-gray-300 hover:text-white">FAQ</a></li>
                </ul>
             </div>
          </div>
