@@ -16,62 +16,89 @@
     <link rel="canonical" href="https://www.indianvalleygutters.com/">
 
     <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HomeAndConstructionBusiness",
+      "name": "Indian Valley Gutters",
+      "description": "Montgomery County's premier gutter service specialist. Professional gutter cleaning starting at $99, plus repair and gutter guard installation. Woman-owned, husband-operated. Licensed & insured.",
+      "url": "https://www.indianvalleygutters.com",
+      "telephone": "+1-267-247-8324",
+      "priceRange": "$$",
+      "image": "https://www.indianvalleygutters.com/images/logo.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "203 East Broad St",
+        "addressLocality": "Souderton",
+        "addressRegion": "PA",
+        "postalCode": "18964",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 40.3118,
+        "longitude": -75.3257
+      },
+      "areaServed": [
+        "Souderton, PA",
+        "Lansdale, PA", 
+        "Telford, PA",
+        "Harleysville, PA",
+        "North Wales, PA",
+        "Montgomeryville, PA",
+        "Montgomery County, PA"
+      ],
+      "openingHoursSpecification": [
         {
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "name": "Indian Valley Gutters",
-            "image": "https://www.indianvalleygutters.com/logo.png",
-            "description": "Professional gutter cleaning and repair services in Souderton, PA and Montgomery County. Woman-Owned Business.",
-            "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "203 East Broad St",
-                "addressLocality": "Souderton",
-                "addressRegion": "PA",
-                "postalCode": "18964",
-                "addressCountry": "US"
-            },
-            "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": "40.3117",
-                "longitude": "-75.2496"
-            },
-            "telephone": "267-247-8324",
-            "url": "https://www.indianvalleygutters.com",
-            "priceRange": "$$",
-            "openingHours": "Mo-Fr 08:00-17:00, Sa 09:00-14:00",
-            "sameAs": [
-                "https://www.facebook.com/share/1Mu5KggpqE/?mibextid=wwXIfr",
-                "https://www.instagram.com/indianvalleygutters?igsh=MXU4eTA2cTl6NXFzeA%3D%3D&utm_source=qr"
-            ],
-            "serviceArea": [
-                "Souderton, PA",
-                "Lansdale, PA",
-                "Telford, PA",
-                "Harleysville, PA",
-                "Montgomery County, PA"
-            ],
-            "hasOfferCatalog": {
-                "@type": "OfferCatalog",
-                "name": "Gutter Services",
-                "itemListElement": [{
-                        "@type": "Offer",
-                        "itemOffered": {
-                            "@type": "Service",
-                            "name": "Gutter Cleaning",
-                            "description": "Professional gutter cleaning and debris removal"
-                        }
-                    },
-                    {
-                        "@type": "Offer",
-                        "itemOffered": {
-                            "@type": "Service",
-                            "name": "Gutter Repair",
-                            "description": "Expert gutter repair and maintenance services"
-                        }
-                    }
-                ]
-            }
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "08:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "08:00",
+          "closes": "14:00"
         }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Gutter Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Gutter Cleaning",
+              "description": "Complete debris removal, downspout cleaning, inspection, and water flow testing. Starting at $99 for single-story homes."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Gutter Repair",
+              "description": "Leak repair, loose hangers, joint sealing, sagging sections, and realignment."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Gutter Guard Installation",
+              "description": "Professional gutter guard installation to prevent debris buildup."
+            }
+          }
+        ]
+      },
+      "makesOffer": {
+        "@type": "Offer",
+        "name": "$99 Gutter Cleaning Special",
+        "price": "99.00",
+        "priceCurrency": "USD",
+        "description": "Flat-rate gutter cleaning for single-story homes. No hidden fees."
+      }
+    }
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
