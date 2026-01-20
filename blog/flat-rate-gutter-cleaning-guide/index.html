@@ -36,14 +36,26 @@
 
     <nav class="bg-white shadow-sm sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="/" class="text-2xl font-black text-blue-900 tracking-tighter italic uppercase">Indian Valley Gutters</a>
-            <div class="hidden md:flex space-x-8 font-semibold text-slate-600 text-sm uppercase tracking-wider">
-                <a href="/services/gutter-cleaning/" class="hover:text-blue-600">Cleaning</a>
-                <a href="/services/gutter-repair/" class="hover:text-blue-600">Repair</a>
-                <a href="/services/gutter-guards/" class="hover:text-blue-600">Guards</a>
-                <a href="/blog/" class="text-blue-600 border-b-2 border-blue-600">Blog</a>
+            <a href="/" class="text-2xl font-black text-blue-900 tracking-tighter italic uppercase">
+                Indian Valley Gutters
+            </a>
+            
+            <div class="hidden md:flex space-x-8 font-bold text-slate-600 text-xs uppercase tracking-widest items-center">
+                <a href="/services/gutter-cleaning/" class="hover:text-blue-600 transition">Cleaning</a>
+                <a href="/services/gutter-repair/" class="hover:text-blue-600 transition">Repair</a>
+                <a href="/services/gutter-guards/" class="hover:text-blue-600 transition">Guards</a>
+                <a href="/about/" class="hover:text-blue-600 transition">About</a>
+                <a href="/blog/" class="hover:text-blue-600 transition">Blog</a>
+                <a href="/locations/" class="text-blue-600 border-b-2 border-blue-600 pb-0.5">Service Areas</a>
             </div>
-            <a href="/book-online/" class="bg-red-600 text-white px-6 py-2 rounded-full font-bold hover:bg-red-700 transition">Book Now</a>
+
+            <a href="/book-online/" class="hidden md:inline-block bg-red-600 text-white px-6 py-2.5 rounded-full font-bold text-sm uppercase tracking-wide hover:bg-red-700 transition shadow-md">
+                Book Now
+            </a>
+
+            <button class="md:hidden text-slate-800 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
         </div>
     </nav>
 
