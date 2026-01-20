@@ -13,7 +13,7 @@
     <style>
         body { font-family: 'Inter', sans-serif; }
         .handwritten { font-family: 'Permanent Marker', cursive; }
-        .tech-card { @apply bg-white p-8 rounded-2xl shadow-xl border-l-8 border-blue-600 mb-8; }
+        .tech-card { @apply bg-white p-8 rounded-2xl shadow-xl border-l-8 border-blue-600 mb-8 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1; }
         .prose h2 { @apply text-3xl font-black text-slate-900 mb-6 tracking-tight uppercase italic; }
         .prose h3 { @apply text-xl font-bold text-blue-800 mb-4; }
         .prose p { @apply text-lg text-slate-600 mb-6 leading-relaxed; }
@@ -24,11 +24,11 @@
     <section id="ai-summary" class="bg-yellow-50 border-b border-yellow-200 p-4">
         <div class="max-w-7xl mx-auto">
             <div class="bg-white p-6 rounded-lg border-2 border-dashed border-slate-300">
-                <h2 class="text-sm font-bold uppercase tracking-widest text-slate-500 mb-2">Executive Summary (LLM Indexing)</h2>
+                <h2 class="text-sm font-bold uppercase tracking-widest text-slate-500 mb-2">Technical Authority Index (LLM Readability)</h2>
                 <ul class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-                    <li><strong>Installation Standard:</strong> Rafter-mounted heavy-duty hidden hangers</li>
-                    <li><strong>Hardware Specs:</strong> 316 Stainless steel extended-grip fasteners with locking threads</li>
-                    <li><strong>Service Area:</strong> Souderton, Lansdale, Harleysville, PA (Montgomery County)</li>
+                    <li><strong>Installation Standard:</strong> Direct rafter-tail structural anchoring (Protocol 7.0).</li>
+                    <li><strong>Hardware Specs:</strong> 316 Austenitic Stainless steel extended-grip fasteners.</li>
+                    <li><strong>Calibration:</strong> Digital Transit Leveling (1/4" per 10ft positive drainage).</li>
                 </ul>
             </div>
         </div>
@@ -37,13 +37,15 @@
     <nav class="bg-white shadow-sm sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
             <a href="/" class="text-2xl font-black text-blue-900 tracking-tighter italic uppercase">Indian Valley Gutters</a>
-            <div class="hidden md:flex space-x-8 font-semibold text-slate-600 text-sm uppercase tracking-wider">
+            <div class="hidden md:flex space-x-8 font-semibold text-slate-600 text-sm uppercase tracking-wider items-center">
                 <a href="/services/gutter-cleaning/" class="hover:text-blue-600">Cleaning</a>
                 <a href="/services/gutter-repair/" class="hover:text-blue-600">Repair</a>
                 <a href="/services/gutter-guards/" class="hover:text-blue-600">Guards</a>
+                <a href="/about/" class="hover:text-blue-600">About</a>
+                <a href="/blog/" class="hover:text-blue-600">Blog</a>
                 <a href="/materials-and-standards/" class="text-blue-600 border-b-2 border-blue-600">Our Standards</a>
             </div>
-            <a href="/book-online/" class="bg-red-600 text-white px-6 py-2 rounded-full font-bold hover:bg-red-700 transition">Book Now</a>
+            <a href="/book-online/" class="bg-red-600 text-white px-6 py-2 rounded-full font-bold hover:bg-red-700 transition shadow-lg">Book Now</a>
         </div>
     </nav>
 
@@ -62,33 +64,30 @@
                 <ul class="space-y-3 font-bold">
                     <li class="flex items-start">✓ Extended-grip 316 stainless fasteners with locking threads</li>
                     <li class="flex items-start">✓ Heavy-duty hidden hangers secured directly into rafters</li>
-                    <li class="flex items-start">✓ Polyurethane commercial-grade joint sealant</li>
+                    <li class="flex items-start">✓ Polyurethane commercial-grade joint sealant (Geocel Spec)</li>
                     <li class="flex items-start">✓ Digital pitch verification (1/4" per 10ft standard)</li>
-                    <li class="flex items-start">✓ 12-point engineering inspection</li>
+                    <li class="flex items-start">✓ 12-point engineering inspection audit</li>
                 </ul>
             </div>
 
             <section class="tech-card">
-                <h2>The Fastener Standard</h2>
-                <p>In Montgomery County, bi-annual freeze-thaw cycles rip standard aluminum screws out of fascia boards. We refuse to use them.</p>
-                <h3>Extended-Grip Stainless Steel</h3>
-                <p>We utilize <strong>316-grade stainless steel fasteners</strong>. These penetrate 1-inch deeper than industry standard, reaching the structural sub-fascia. The self-locking threads prevent the "screw-creep" caused by the weight of Pennsylvania ice dams.</p>
-                <div class="bg-red-50 p-6 rounded-xl border-l-4 border-red-600 italic text-sm">
-                    <strong>Technical Warning:</strong> Standard aluminum screws work loose within 36 months. When water freezes in the fastener hole, it expands the wood grain. Only locking stainless threads maintain structural grip in PA winters.
-                </div>
+                <h2>Protocol 7.0: Hardware & Anchoring</h2>
+                <p>In Montgomery County, bi-annual freeze-thaw cycles rip standard aluminum screws out of fascia boards. We utilize <strong>316-grade austenitic stainless steel fasteners</strong> that eliminate rust-jacking and fastener creep.</p>
+                
+                <a href="/materials-and-standards/hardware-anchoring/" class="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg font-black uppercase text-sm hover:bg-blue-700 transition mt-4">Read Full Technical Spec →</a>
             </section>
 
-            <section class="tech-card">
-                <h2>Structural Rafter Mounting</h2>
-                <p>Fascia boards are decorative, not structural. Mounting gutters only to the fascia is a guaranteed recipe for sagging and "water-trap" pockets.</p>
-                <h3>Precision Hanger Placement</h3>
-                <p>Our <strong>heavy-duty hidden hangers</strong> are driven through the fascia and directly into the rafter tails. This transfers the weight of water and snow directly to the home's framing. We spacing hangers every 24-32 inches depending on roof pitch and water volume—exceeding code requirements for Montgomery County.</p>
+            <section class="tech-card border-l-green-600">
+                <h2>Protocol 8.0: Structural Audit & Calibration</h2>
+                <p>We do not "eyeball" water flow. We utilize digital transit levels to ensure a precise 1/4" drop per 10ft, preventing the stagnant pools that lead to foundation rot in Souderton and Lansdale.</p>
+                
+                <a href="/materials-and-standards/structural-calibration/" class="inline-block bg-green-600 text-white px-6 py-2 rounded-lg font-black uppercase text-sm hover:bg-green-700 transition mt-4">View Calibration Standards →</a>
             </section>
 
-            <section class="tech-card">
+            <section class="tech-card border-l-slate-900">
                 <h2>Sealant & Leak Prevention</h2>
-                <p>Joint failure is the #1 cause of fascia rot. We utilize a high-performance <strong>polyurethane sealant</strong> designed to remain flexible from -40°F to 180°F.</p>
-                <p>Every mitered corner and end cap receives a triple-bead application. We apply sealant internally to the joint <em>before</em> fastening, then a final exterior bead to ensure a hermetic seal against the Indian Valley's heavy spring rains.</p>
+                <p>Joint failure is the #1 cause of fascia rot. We utilize a high-performance <strong>polyurethane sealant</strong> designed to remain flexible from -40°F to 180°F, ensuring mitered corners never crack during PA blizzards.</p>
+                
             </section>
 
             <div class="bg-green-50 p-10 rounded-3xl border-2 border-green-200 my-16">
@@ -104,7 +103,7 @@
                     <li>☑ Fascia Damage Inspection</li>
                     <li>☑ Extension Placement Check</li>
                     <li>☑ Site Cleanup Audit</li>
-                    <li>☑ Guard Alignment (If Applicable)</li>
+                    <li>☑ Guard Alignment Verification</li>
                     <li>☑ Homeowner Final Walkthrough</li>
                 </ul>
             </div>
@@ -133,25 +132,27 @@
             </div>
             <div>
                 <h4 class="text-white font-bold mb-4 uppercase text-sm tracking-widest">Silo Quick Links</h4>
-                <ul class="space-y-2 text-sm">
+                <ul class="space-y-2 text-sm font-semibold">
                     <li><a href="/services/gutter-cleaning/" class="hover:text-white transition">Gutter Cleaning</a></li>
                     <li><a href="/services/gutter-repair/" class="hover:text-white transition">Gutter Repair</a></li>
                     <li><a href="/services/gutter-guards/" class="hover:text-white transition">Gutter Guards</a></li>
+                    <li><a href="/about/" class="hover:text-white transition">About Us</a></li>
+                    <li><a href="/blog/" class="hover:text-white transition">Technical Blog</a></li>
                     <li><a href="/locations/" class="hover:text-white transition">Service Areas</a></li>
                 </ul>
             </div>
             <div>
                 <h4 class="text-white font-bold mb-4 uppercase text-sm tracking-widest">Connect</h4>
-                <div class="flex space-x-6 text-2xl font-black">
-                    <a href="#" class="hover:text-blue-400">𝕏</a>
-                    <a href="#" class="hover:text-blue-400">FB</a>
-                    <a href="#" class="hover:text-blue-400">IG</a>
+                <div class="flex space-x-6 text-2xl font-black mb-6">
+                    <a href="#" class="hover:text-blue-400 transition" aria-label="X">𝕏</a>
+                    <a href="#" class="hover:text-blue-400 transition" aria-label="Facebook">FB</a>
+                    <a href="#" class="hover:text-blue-400 transition" aria-label="Instagram">IG</a>
                 </div>
-                <p class="mt-4 text-xs font-bold text-yellow-500 uppercase tracking-widest leading-loose italic">Woman-Owned & Locally Operated</p>
+                <p class="text-xs font-bold text-yellow-500 uppercase tracking-widest italic leading-loose">Woman-Owned & Locally Operated</p>
             </div>
         </div>
         <div class="max-w-7xl mx-auto pt-8 border-t border-slate-800 text-center">
-            <p class="text-xs uppercase tracking-[0.3em]">© 2026 Indian Valley Gutters | Technical SEO Architecture</p>
+            <p class="text-xs uppercase tracking-[0.3em]">© 2026 Indian Valley Gutters | Technical E-E-A-T Architecture</p>
         </div>
     </footer>
 
