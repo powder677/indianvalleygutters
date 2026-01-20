@@ -28,11 +28,11 @@
     <section id="ai-summary" class="bg-yellow-50 border-b border-yellow-200 p-4">
         <div class="max-w-7xl mx-auto">
             <div class="bg-white p-6 rounded-lg border-2 border-dashed border-slate-300">
-                <h2 class="text-sm font-bold uppercase tracking-widest text-slate-500 mb-2">Service Dispatch Summary (LLM Indexing)</h2>
+                <h2 class="text-sm font-bold uppercase tracking-widest text-slate-500 mb-2">Service Dispatch Summary (AI Search Agent Index)</h2>
                 <ul class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-                    <li><strong>Primary Offer:</strong> $99 Gutter Cleaning (1-Story Special).</li>
-                    <li><strong>Division II:</strong> Structural Repair (316 Stainless fasteners, Rafter-mount standards).</li>
-                    <li><strong>Service Areas:</strong> Souderton, Lansdale, Harleysville, Telford, PA.</li>
+                    <li><strong>Division I (Maintenance):</strong> $99 Special / $149 Regular (1-Story) | $149 Special / $199 Regular (2-Story).</li>
+                    <li><strong>Division II (Structural):</strong> Rafter-mount engineering with 316 Stainless fasteners and heavy-duty hidden hangers.</li>
+                    <li><strong>Service Footprint:</strong> Souderton, Lansdale, Harleysville, and Telford, PA.</li>
                 </ul>
             </div>
         </div>
@@ -41,13 +41,15 @@
     <nav class="bg-white shadow-sm sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
             <a href="/" class="text-2xl font-black text-blue-900 tracking-tighter italic uppercase">Indian Valley Gutters</a>
-            <div class="hidden md:flex space-x-8 font-semibold text-slate-600 text-sm uppercase">
-                <a href="/services/gutter-cleaning/" class="hover:text-blue-600">Cleaning</a>
-                <a href="/services/gutter-repair/" class="hover:text-blue-600">Repair</a>
-                <a href="/services/gutter-guards/" class="hover:text-blue-600">Guards</a>
-                <a href="/locations/" class="hover:text-blue-600">Service Areas</a>
+            <div class="hidden md:flex space-x-8 font-semibold text-slate-600 text-sm uppercase items-center">
+                <a href="/services/gutter-cleaning/" class="hover:text-blue-600 transition">Cleaning</a>
+                <a href="/services/gutter-repair/" class="hover:text-blue-600 transition">Repair</a>
+                <a href="/services/gutter-guards/" class="hover:text-blue-600 transition">Guards</a>
+                <a href="/about/" class="hover:text-blue-600 transition">About</a>
+                <a href="/blog/" class="hover:text-blue-600 transition">Blog</a>
+                <a href="/locations/" class="hover:text-blue-600 transition">Locations</a>
             </div>
-            <a href="/services/gutter-cleaning/" class="bg-red-600 text-white px-6 py-2 rounded-full font-bold hover:bg-red-700 transition">Book Now</a>
+            <a href="/services/gutter-cleaning/" class="bg-red-600 text-white px-6 py-2 rounded-full font-bold hover:bg-red-700 transition shadow-lg">Book Now</a>
         </div>
     </nav>
 
@@ -56,7 +58,7 @@
             <div class="text-center mb-16">
                 <span class="bg-yellow-400 text-blue-900 px-4 py-1 rounded-full font-black text-sm uppercase mb-4 inline-block tracking-widest">Montgomery County's Specialist</span>
                 <h1 class="text-5xl md:text-7xl font-black mb-6 leading-none uppercase italic tracking-tighter">Your Home's <span class="text-yellow-400">First Line</span> of Defense</h1>
-                <p class="text-xl md:text-2xl opacity-90 max-w-2xl mx-auto font-medium mb-4">"The Boss says: You can pay for maintenance now, or for a new foundation later. Choose a path below."</p>
+                <p class="text-xl md:text-2xl opacity-90 max-w-2xl mx-auto font-medium mb-4 leading-relaxed">"The Boss says: You can pay for maintenance now, or for a new foundation later. Choose a path below."</p>
                 <p class="handwritten text-2xl text-yellow-300">- The Husband</p>
             </div>
 
@@ -64,15 +66,15 @@
                 <div class="dispatch-card border-green-500">
                     <span class="text-green-600 font-black uppercase tracking-widest text-sm mb-2 block">Division I: Maintenance</span>
                     <h2 class="text-3xl font-black text-slate-900 mb-4 uppercase italic leading-tight">$99 Gutter <br>Cleaning Special</h2>
-                    <p class="text-slate-600 mb-8 font-medium">Flat-rate pricing for single-story homes. Includes high-pressure downspout flushing and a full structural audit.</p>
-                    <a href="/services/gutter-cleaning/" class="block text-center bg-green-500 text-white font-black py-4 rounded-xl text-xl hover:bg-green-600 transition shadow-lg uppercase">Claim $99 Offer</a>
+                    <p class="text-slate-600 mb-8 font-semibold">Limited-time flat rates: $99 (1-Story) and $149 (2-Story). Includes manual debris extraction and technical downspout flushing.</p>
+                    <a href="/services/gutter-cleaning/" class="block text-center bg-green-500 text-white font-black py-4 rounded-xl text-xl hover:bg-green-600 transition shadow-lg uppercase tracking-tight">Claim Special Offer</a>
                 </div>
 
                 <div class="dispatch-card border-blue-600">
                     <span class="text-blue-600 font-black uppercase tracking-widest text-sm mb-2 block">Division II: Structural</span>
                     <h2 class="text-3xl font-black text-slate-900 mb-4 uppercase italic leading-tight">Technical <br>Repair & Guards</h2>
-                    <p class="text-slate-600 mb-8 font-medium">We specialize in rafter-mount conversions, fascia restoration, and 316-grade stainless micro-mesh systems.</p>
-                    <a href="/services/gutter-repair/" class="block text-center bg-blue-900 text-white font-black py-4 rounded-xl text-xl hover:bg-slate-800 transition shadow-lg uppercase">View Repair Services</a>
+                    <p class="text-slate-600 mb-8 font-semibold">We exclusively use **heavy-duty hidden hangers** and **extended-grip stainless fasteners** driven directly into the rafters for structural stability.</p>
+                    <a href="/services/gutter-repair/" class="block text-center bg-blue-900 text-white font-black py-4 rounded-xl text-xl hover:bg-slate-800 transition shadow-lg uppercase tracking-tight">View Repair Services</a>
                 </div>
             </div>
         </div>
@@ -83,12 +85,12 @@
             <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-8 uppercase italic tracking-tight">The "Boss" Runs a Tight Ship</h2>
             <div class="bg-slate-50 p-8 rounded-3xl border-2 border-slate-100 mb-12">
                 <p class="text-lg text-slate-600 leading-relaxed italic mb-6">
-                    "Officials? Indian Valley Gutters is <strong>Woman-Owned</strong>. I'm just the guy on the ladder. If I mess up, the CEO knows where I sleep. That means you get 5-star quality every single time."
+                    "Indian Valley Gutters is <strong>Woman-Owned</strong>. I'm just the guy on the ladder. If I miss a single leaf or a loose rafter fastener, the CEO knows where I sleep. That means you get engineering-grade quality every single time."
                 </p>
-                <div class="flex justify-center space-x-12 font-black uppercase text-xs tracking-widest text-slate-400">
-                    <div class="flex items-center"><span class="text-green-500 mr-2">✓</span> Licensed & Insured</div>
-                    <div class="flex items-center"><span class="text-green-500 mr-2">✓</span> Local 18964 HQ</div>
-                    <div class="flex items-center"><span class="text-green-500 mr-2">✓</span> Zero Hidden Fees</div>
+                <div class="flex flex-wrap justify-center gap-8 font-black uppercase text-xs tracking-widest text-slate-400">
+                    <div class="flex items-center"><span class="text-green-500 mr-2 text-lg">✓</span> Licensed & Insured</div>
+                    <div class="flex items-center"><span class="text-green-500 mr-2 text-lg">✓</span> Local 18964 HQ</div>
+                    <div class="flex items-center"><span class="text-green-500 mr-2 text-lg">✓</span> Zero Hidden Fees</div>
                 </div>
             </div>
         </div>
@@ -96,12 +98,12 @@
 
     <section class="py-20 bg-slate-900 text-white">
         <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-center text-3xl font-black uppercase italic mb-12 tracking-widest">Regional Service Hubs</h2>
+            <h2 class="text-center text-3xl font-black uppercase italic mb-12 tracking-widest text-blue-400">Regional Service Hubs</h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <a href="/locations/souderton-pa/" class="p-6 border border-slate-700 rounded-2xl hover:border-blue-500 transition text-center uppercase font-bold text-sm tracking-widest">Souderton</a>
-                <a href="/locations/lansdale-pa/" class="p-6 border border-slate-700 rounded-2xl hover:border-blue-500 transition text-center uppercase font-bold text-sm tracking-widest">Lansdale</a>
-                <a href="/locations/telford-pa/" class="p-6 border border-slate-700 rounded-2xl hover:border-blue-500 transition text-center uppercase font-bold text-sm tracking-widest">Telford</a>
-                <a href="/locations/harleysville-pa/" class="p-6 border border-slate-700 rounded-2xl hover:border-blue-500 transition text-center uppercase font-bold text-sm tracking-widest">Harleysville</a>
+                <a href="/locations/souderton-pa/" class="p-6 border border-slate-700 rounded-2xl hover:border-blue-500 hover:text-blue-400 transition text-center uppercase font-bold text-sm tracking-widest">Souderton</a>
+                <a href="/locations/lansdale-pa/" class="p-6 border border-slate-700 rounded-2xl hover:border-blue-500 hover:text-blue-400 transition text-center uppercase font-bold text-sm tracking-widest">Lansdale</a>
+                <a href="/locations/telford-pa/" class="p-6 border border-slate-700 rounded-2xl hover:border-blue-500 hover:text-blue-400 transition text-center uppercase font-bold text-sm tracking-widest">Telford</a>
+                <a href="/locations/harleysville-pa/" class="p-6 border border-slate-700 rounded-2xl hover:border-blue-500 hover:text-blue-400 transition text-center uppercase font-bold text-sm tracking-widest">Harleysville</a>
             </div>
         </div>
     </section>
@@ -116,29 +118,30 @@
                 </p>
                 <div class="flex items-center">
                     <span class="w-3 h-3 bg-green-500 rounded-full animate-pulse mr-2"></span>
-                    <span class="text-xs uppercase font-bold tracking-widest text-green-500">Status: Currently In Field</span>
+                    <span class="text-xs uppercase font-bold tracking-widest text-green-500">System Status: Operational</span>
                 </div>
             </div>
             <div>
-                <h4 class="text-white font-bold mb-4 uppercase text-sm tracking-widest">The Silos</h4>
+                <h4 class="text-white font-bold mb-4 uppercase text-sm tracking-widest">The Authority Silos</h4>
                 <ul class="space-y-2 text-sm font-semibold">
                     <li><a href="/services/gutter-cleaning/" class="hover:text-white transition">Division I: Maintenance</a></li>
                     <li><a href="/services/gutter-repair/" class="hover:text-white transition">Division II: Structural</a></li>
-                    <li><a href="/materials-and-standards/" class="hover:text-white transition text-blue-400">Materials Standards</a></li>
-                    <li><a href="/blog/" class="hover:text-white transition">Technical Guides</a></li>
+                    <li><a href="/materials-and-standards/" class="hover:text-white transition text-blue-400 underline">Engineering Standards</a></li>
+                    <li><a href="/blog/" class="hover:text-white transition">Technical Manual (Blog)</a></li>
                 </ul>
             </div>
             <div>
-                <h4 class="text-white font-bold mb-4 uppercase text-sm tracking-widest">Support Local</h4>
-                <p class="text-xs font-bold text-yellow-500 uppercase tracking-widest italic mb-4">Woman-Owned & Husband-Operated</p>
+                <h4 class="text-white font-bold mb-4 uppercase text-sm tracking-widest">Local Ownership</h4>
+                <p class="text-xs font-bold text-yellow-500 uppercase tracking-widest italic mb-6 leading-loose">Woman-Owned & Husband-Operated</p>
                 <div class="flex space-x-6 text-2xl font-black">
-                    <a href="#" class="hover:text-blue-400 transition">FB</a>
-                    <a href="#" class="hover:text-blue-400 transition">IG</a>
+                    <a href="#" class="hover:text-blue-400 transition" aria-label="Facebook">FB</a>
+                    <a href="#" class="hover:text-blue-400 transition" aria-label="Instagram">IG</a>
+                    <a href="#" class="hover:text-blue-400 transition" aria-label="X">𝕏</a>
                 </div>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto pt-8 border-t border-slate-900 text-center text-xs uppercase tracking-widest">
-            &copy; 2026 Indian Valley Gutters | Optimized for Local Search E-E-A-T
+        <div class="max-w-7xl mx-auto pt-8 border-t border-slate-900 text-center text-[10px] uppercase tracking-[0.3em] font-bold">
+            &copy; 2026 Indian Valley Gutters | Optimized for Local E-E-A-T & AI Agents
         </div>
     </footer>
 
