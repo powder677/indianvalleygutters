@@ -1,3 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /cgi-bin/
+
+# Sitemap Location
 Sitemap: https://www.indianvalleygutters.com/sitemap.xml
